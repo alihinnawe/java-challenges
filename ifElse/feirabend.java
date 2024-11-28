@@ -1,28 +1,36 @@
 boolean feirabend (double jetzt, double fazeit) {
-	if (jetzt > fazeit) {
-		return true;
+	if (jetzt < fazeit) {
+		return false;
 	}
 	else {
-		println ("kein fa"); 
-		return false;
+		println ("fa"); 
+		return true;
 	}
 }
 
 boolean buffetTime (double jetzt, double buffetzeit) {
-	if (buffetzeit < jetzt) {
-		return true;
+	if ( jetzt < buffetzeit) {
+		return false;
 	}
 	else {
-		println ("keine Buffetzeit"); 
-		return false;
+		println ("Buffetzeit"); 
+		return true;
 	}
 }
 
-// if (feirabend(1,2) && buffetTime(2,3)) {
-// if (feirabend(9,16) && buffetTime(9,12)) { 
-if (feirabend(16,15) && buffetTime(16,12)) {
-	System.out.println("ende");
-} else {
-	println ("kombi"); 
-	System.out.println("keep working");
+
+String test (double jetzt, double feirabenzeit, double buffetzeit) {
+	if (feirabend(jetzt,feirabenzeit) && buffetTime(jetzt,buffetzeit)) { 
+		return "ende"; 
+	}
+	else if (feirabend(jetzt,feirabenzeit) || buffetTime(jetzt,buffetzeit)) {
+		return "kein buffezeit"; 
+	}
+	else {
+		println ("kombi"); 
+		return "keep working";
+	}
 }
+test(16,15,9);
+test(14,16,9);
+test(14,15,15);
