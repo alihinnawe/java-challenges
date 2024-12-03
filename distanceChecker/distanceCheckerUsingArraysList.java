@@ -22,12 +22,13 @@ public class DistanceChecker {
         int result = getFinalResult();
         System.out.println("Final Result: " + result);
     }
+
     public static int getFinalResult() {
-		
+        int distanceSum = 0; 
+
         try {
             File file = new File("C:\\documents\\java-challenges\\distanceChecker\\input1.txt");
             Scanner scanner = new Scanner(file);
-            int distanceSum = 0;
             ArrayList<Integer> arr1 = new ArrayList<>();
             ArrayList<Integer> arr2 = new ArrayList<>();
 
@@ -72,11 +73,10 @@ public class DistanceChecker {
                     distanceSum += distance;
                 }
             }
-			return distanceSum;´
+            return distanceSum;
         } catch (FileNotFoundException e) {
             System.out.println("File not found: " + e.getMessage());
+            return 0; 
         }
-		
     }
-	
 }
