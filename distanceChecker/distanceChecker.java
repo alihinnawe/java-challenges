@@ -3,10 +3,10 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
-public class FileReaderExample {
+public class DistanceChecker {
     public static void main(String[] args) {
         try {
-            File file = new File("C:\\Users\\hinnawe.ali\\Documents\\java-challanges\\distanceChecker\\input1");
+            File file = new File(".\\java\\input");
             Scanner scanner = new Scanner(file);
             int distanceSum = 0;
             ArrayList<Integer> arr1 = new ArrayList<>();
