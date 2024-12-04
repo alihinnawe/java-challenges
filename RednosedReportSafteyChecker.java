@@ -9,6 +9,7 @@ class RednosedReportSafteyChecker {
         try {
             int [][] reportSafetyResult = getSafeReportsCount();
 			int maxColCount = 8;
+			int finalCount = 0;
 			for (int i  = 0 ; i<reportSafetyResult.length; ++i) {
 				ArrayList<Integer> differenceArray = new ArrayList<Integer>();            
 				for (int j = 0; j< reportSafetyResult[i].length -1;++j) {	
@@ -17,6 +18,8 @@ class RednosedReportSafteyChecker {
 					
 				}
 				System.out.println(differenceArray.toString());
+				//TODO
+				for (i : differenceArray.length) 
 				} } catch (FileNotFoundException e) {
             System.err.println("File not found: " + e.getMessage());
         }
