@@ -14,8 +14,8 @@ public class Codechef {
 
         int[] arr1 = new int[1000];
         int[] arr2 = new int[1000];
+		
         int lineNumber = 0;
-
         while (scanner.hasNextLine()) {
             String line = scanner.nextLine();
             String[] values = line.split("\\s+");
