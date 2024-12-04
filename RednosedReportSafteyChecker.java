@@ -9,7 +9,7 @@ class RednosedReportSafteyChecker {
         try {
             int [][] reportSafetyResult = getSafeReportsCount();
 			int maxColCount = 8;
-			int finalCount = 0;
+			int safeCount = 0; 
 			for (int i  = 0 ; i<reportSafetyResult.length; ++i) {
 				ArrayList<Integer> differenceArray = new ArrayList<Integer>();            
 				for (int j = 0; j< reportSafetyResult[i].length -1;++j) {	
@@ -20,13 +20,23 @@ class RednosedReportSafteyChecker {
 				//System.out.println(differenceArray.toString());
 				//TODO
 				boolean allPositive = true;
+				boolean allNegative = true;
+				boolean safe =  true;
 				for (int num : differenceArray) {
-					if (num <= 0) {
+					if (num < 0 && num > -3) {
 						allPositive = false;
-						break;
+						safe = false;
 					}
+					else if (num > 0 && num > 3) {
+						allNegative = false;
+						safe = false;
+					}
+					else {
+						safe = true;
+						++safeCount;}
 				}
-				System.out.println("All numbers are positive: " + allPositive);
+				
+				System.out.println("safeCount: " + safeCount);
 			} } catch (FileNotFoundException e) {
             System.err.println("File not found: " + e.getMessage());
         }
