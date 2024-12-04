@@ -17,10 +17,17 @@ class RednosedReportSafteyChecker {
 					differenceArray.add(difference);
 					
 				}
-				System.out.println(differenceArray.toString());
+				//System.out.println(differenceArray.toString());
 				//TODO
-				for (i : differenceArray.length) 
-				} } catch (FileNotFoundException e) {
+				boolean allPositive = true;
+				for (int num : differenceArray) {
+					if (num <= 0) {
+						allPositive = false;
+						break;
+					}
+				}
+				System.out.println("All numbers are positive: " + allPositive);
+			} } catch (FileNotFoundException e) {
             System.err.println("File not found: " + e.getMessage());
         }
     }
