@@ -2,21 +2,22 @@ import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Arrays;
+import java.util.ArrayList;
 
 class RednosedReportSafteyChecker {
     public static void main(String[] args) {
         try {
             int [][] reportSafetyResult = getSafeReportsCount();
 			int maxColCount = 8;
-            for (int i  = 0 ; i<reportSafetyResult.length; ++i) {
-				for (int j = 0; j< reportSafetyResult[i].length -1;++j) {
-					//System.out.println("arrayColumnValue is: " + reportSafetyResult[i][j]);
-					
-					System.out.println((reportSafetyResult[i][j] - reportSafetyResult[i][j+1]));
-
+			for (int i  = 0 ; i<reportSafetyResult.length; ++i) {
+				ArrayList<Integer> differenceArray = new ArrayList<Integer>();            
+				for (int j = 0; j< reportSafetyResult[i].length -1;++j) {	
+					int difference = reportSafetyResult[i][j] - reportSafetyResult[i][j+1];
+					differenceArray.add(difference);
 					
 				}
-			} } catch (FileNotFoundException e) {
+				System.out.println(differenceArray.toString());
+				} } catch (FileNotFoundException e) {
             System.err.println("File not found: " + e.getMessage());
         }
     }
