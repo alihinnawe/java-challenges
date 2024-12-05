@@ -6,47 +6,29 @@ import java.util.ArrayList;
 
 class RednosedReportSafteyChecker {
     public static void main(String[] args) {
-        try {
-			// show all reports in the input.txt
-            int [][] reportSafetyResult = getSafeReportsCount();
-			//System.out.println(Arrays.toString(reportSafetyResult[1]));
+		try {
+            int[][] reportSafetyResult = getSafeReportsCount();
 
-			int maxColCount = 8;
-			int safeCount = 0; 
-			for (int i  = 0 ; i<reportSafetyResult.length; ++i) {
-				//System.out.println(Arrays.toString(reportSafetyResult[i]));
-				//TODO 
-				ArrayList<ArrayList<Integer>> differenceArray = new ArrayList<ArrayList<Integer>>();
-				//ArrayList<Integer> row = new ArrayList<Integer>();				          
-				for (int j = 0; j< reportSafetyResult[i].length -1;++j) {	
-					int difference = reportSafetyResult[i][j] - reportSafetyResult[i][j+1];
-					differenceArray[i][].add(difference);
-				}
-				//differenceArray.add(row);
-				System.out.println(differenceArray.toString());
-				//TODO
-				/*
-				boolean allPositive = true;
-				boolean allNegative = true;
-				boolean safe =  true;
-				for (int num : differenceArray) {
-					if (num < 0 && num >= -3) {
-						allPositive = false;
-						safe = false;
-					}
-					else if (num > 0 && num >= 3) {
-						allNegative = false;
-						safe = false;
-					}
-					else {
-						safe = true;
-						++safeCount;}
-				}
-				
-				//System.out.println("safeCount: " + safeCount);
-				 */
-			} } catch (FileNotFoundException e) {
-            System.err.println("File not found: " + e.getMessage());
+            int maxColCount = 8;
+            int safeCount = 0; 
+
+            ArrayList<ArrayList<Integer>> differenceArray = new ArrayList<ArrayList<Integer>>();
+
+            for (int i = 0; i < reportSafetyResult.length; ++i) {
+                ArrayList<Integer> row = new ArrayList<Integer>();
+
+                for (int j = 0; j < reportSafetyResult[i].length - 1; ++j) { 
+                    int difference = reportSafetyResult[i][j] - reportSafetyResult[i][j + 1];
+                    row.add(difference);
+                }
+
+                differenceArray.add(row);
+            }
+
+            System.out.println(differenceArray.toString());
+
+        } catch (Exception e) {
+            e.printStackTrace();
         }
        
     }
