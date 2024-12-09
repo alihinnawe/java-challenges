@@ -28,6 +28,8 @@ public class Main {
 	
 	public static void main (String [] args){
 		Bruch bruch1 = new Bruch(24,3);
+		Bruch bruch2 = new Bruch(25,9);
+
 		
 		
 	}
