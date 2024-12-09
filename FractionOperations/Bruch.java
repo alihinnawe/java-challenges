@@ -1,0 +1,25 @@
+class Bruch {
+	private int nominomator;
+	private int dominonator;
+	
+	
+	public Bruch (int nominator, int dominator) {
+		this.nominomator = nominomator;
+		this.dominonator = dominonator; 
+	} 
+	
+	public Bruch (int nominator) {
+		this.nominomator = nominomator;
+		this.dominonator = 1; 
+	} 
+	
+	public Bruch multiplication (Bruch bruch) {
+		int nominatorMultiplication = this.nominomator * bruch.nominomator;
+		int dominatorMultiplication = this.dominonator * bruch.dominonator;
+		return new Bruch (nominatorMultiplication, dominatorMultiplication);
+		} 
+		
+	public void print () {
+		System.out.println(this.nominomator,this.dominonator);
+		}
+}
