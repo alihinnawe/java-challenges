@@ -24,7 +24,7 @@ class RednosedReportSafteyChecker {
                 ++lineNumber;
             }
 
-            for (int i = 0; i < differenceArray.length; ++i) {
+            for (int i = 0; i < differenceArray.length && differenceArray[i]; ++i) { // Added null check for safety
                 boolean allSameSign = true;
                 boolean withinBounds = true;
                 boolean isPositive = differenceArray[i][0] > 0;
