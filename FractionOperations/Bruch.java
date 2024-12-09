@@ -20,7 +20,7 @@ class Bruch {
 		} 
 		
 	public void print () {
-		System.out.println(this.nominomator,this.dominonator);
+        System.out.println(this.zaeler + "/" + this.nenner);
 		}
 }
 
@@ -30,7 +30,7 @@ public class Main {
 		Bruch bruch1 = new Bruch(24,3);
 		Bruch bruch2 = new Bruch(25,9);
 		Bruch result = bruch1.multiplication(bruch2);
-		result.print()
+		result.print();
 		
 	}
 }
