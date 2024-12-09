@@ -26,5 +26,9 @@ class Bruch {
 
 public class Main {
 	
-	public static void main (String [] args){}
+	public static void main (String [] args){
+		Bruch bruch1 = new Bruch(24,3);
+		
+		
+	}
 }
