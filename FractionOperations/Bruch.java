@@ -23,3 +23,8 @@ class Bruch {
 		System.out.println(this.nominomator,this.dominonator);
 		}
 }
+
+public class Main {
+	
+	public static void main (String [] args){}
+}
