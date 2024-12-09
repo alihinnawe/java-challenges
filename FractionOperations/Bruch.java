@@ -20,7 +20,7 @@ class Bruch {
 		} 
 		
 	public void print () {
-        System.out.println(this.zaeler + "/" + this.nenner);
+        System.out.println(this.nominomator + "/" + this.dominonator);
 		}
 }
 
