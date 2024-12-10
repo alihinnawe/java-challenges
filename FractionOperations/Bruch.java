@@ -86,6 +86,10 @@ public class Bruch {
 			return "Bruch: " + zaehler + " / " + nenner; 
 		}
 		
+		@Override public int hashCode ()
+		{
+			return (19 + zaehler) * 17 + nenner; 
+		}
 
 }	
 		
