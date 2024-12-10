@@ -75,5 +75,10 @@ public class Bruch {
 			}
 			return a;  
 		}
+
+		public Double toDouble ()
+		{
+			return (1.0 * zaehler) / nenner; 
+		}
 }	
 		
