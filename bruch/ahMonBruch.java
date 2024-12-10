@@ -12,10 +12,10 @@ class Bruch {
         this.zaeler = 1;
     }
 
-    public Bruch mul(Bruch multiplication) {
-        int newZaeler = this.zaeler * multiplication.zaeler;
-        int newNenner = this.nenner * multiplication.nenner;
-        return new Bruch(newNenner, newZaeler);
+    public Bruch mul(Bruch bruch) {
+        int neuZaeler = this.zaeler * bruch.zaeler;
+        int neuNenner = this.nenner * bruch.nenner;
+        return new Bruch(neuNenner, neuZaeler);
     }
 
     public void print() {
