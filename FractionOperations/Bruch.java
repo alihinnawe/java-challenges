@@ -48,5 +48,11 @@ public class Bruch {
 				int nn = (nenner * b.nenner); 
 				return new Bruch (nz, nn); 
 		}
+
+		public Bruch kuerzen () 
+		{
+				int teiler = ggT (zaehler, nenner); 
+				return new Bruch (zaehler/teiler, nenner/teiler);
+		}
 }	
 		
