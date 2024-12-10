@@ -42,6 +42,11 @@ public class Bruch {
 				return new Bruch (((zaehler*b.nenner) + (b.zaehler * nenner)), (nnenner * b.nenner)  ); 
 		}
 		*/
-
+		public Bruch add (Bruch b) 
+		{
+				int nz = (zaehler * b.nenner) + (b.zaehler * nenner);
+				int nn = (nenner * b.nenner); 
+				return new Bruch (nz, nn); 
+		}
 }	
 		
