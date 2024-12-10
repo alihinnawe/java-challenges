@@ -85,6 +85,7 @@ public class Bruch {
 		{
 			return "Bruch: " + zaehler + " / " + nenner; 
 		}
+		
 
 }	
 		
