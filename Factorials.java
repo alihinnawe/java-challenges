@@ -1,8 +1,8 @@
-public class Fctorials {
+public class Factorials {
 
 		private int factorialNum; 
 		
-		public Fctorials ()
+		public Factorials ()
 		{
 		}
 		public static void main (String [] arg) {
