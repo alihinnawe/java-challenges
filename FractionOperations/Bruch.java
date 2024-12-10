@@ -80,5 +80,11 @@ public class Bruch {
 		{
 			return (1.0 * zaehler) / nenner; 
 		}
+		
+		@Override public String toString ()
+		{
+			return "Bruch: " + zaehler + " / " + nenner; 
+		}
+
 }	
 		
