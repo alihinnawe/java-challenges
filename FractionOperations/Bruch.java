@@ -54,5 +54,16 @@ public class Bruch {
 				int teiler = ggT (zaehler, nenner); 
 				return new Bruch (zaehler/teiler, nenner/teiler);
 		}
+		
+		private int ggT (int a, int b)		
+		{
+			for (int i = Math.min (a, b); i > 1; --i)
+			{
+				if (a % i == 0)
+					if (b % i == 0)
+						return i;
+			}
+			return 1; 
+		}
 }	
 		
