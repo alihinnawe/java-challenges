@@ -90,6 +90,14 @@ public class Bruch {
 		{
 			return (19 + zaehler) * 17 + nenner; 
 		}
-
+		
+		@Override public boolean equals (Object o)
+		{
+			if (o instanceof Bruch b)
+			{
+				return nenner * b.zaehler == zaehler * b.nenner; 
+			}
+			else return false; 
+		}
 }	
 		
