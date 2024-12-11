@@ -1,28 +1,25 @@
 public class Intlist {
-	private int length = 1; 
+
     private int value;
     private Intlist next = null;  
     
     public Intlist (int i) {value = i;}
+    
+    public int getVal () {return value;}
+    public Intlist getNext() {return next;}
+    
     public void add (int i) {
-		++length; 
         if (next == null) 
             next = new Intlist (i);
         else 
             next.add (i);
     }
-    public int getVal () {return value;}
-    public Intlist getNext() {return next;}
     
 	@Override public String toString () {
 		if (next == null)
 			return "Intlist: " + value + " ||"; 
 		else
 			return "Intlist: " + value + ", " + next.toString (); 
-	}
-
-	public int getLength () {
-		return length;
 	}
 	
 	public int size () {
@@ -45,5 +42,4 @@ public class Intlist {
 		System.out.println (" " + il.getLength ());
 
 	}
-	
 }
