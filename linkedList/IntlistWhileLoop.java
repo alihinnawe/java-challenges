@@ -15,9 +15,8 @@ public class Intlist {
             next.add (i);
     }
 
-	/*    
     public void doadd (int i) {
-		Intlist tmp = next; 
+		Intlist tmp = this; 
         while (tmp != null)
         {
 			tmp = tmp.next; 
@@ -26,7 +25,9 @@ public class Intlist {
 		System.out.println (this);
     }
 
-    public void vdoadd (int i) {
+
+	/*  
+	 * 	public void vdoadd (int i) {
         while (next != null)
         {
 			next.add (i); 
