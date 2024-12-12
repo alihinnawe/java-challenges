@@ -63,22 +63,28 @@ public class Intlist {
 	{
 		Intlist ildo = new Intlist (3); 
 		Intlist ilrek = new Intlist (3); 
-		int max = 1000; 
+		int max = 100000; 
 		Random rnd = new Random (1);
 		
 		for (int i = 0; i < max;  ++i)
 		{
 			ildo.kkadd (rnd.nextInt (100));
+			if (i % 10_000 == 0)
+				System.out.print (".");
 		}
+		System.out.println ();
 		
-		System.out.println (ildo);
+		// System.out.println (ildo);
 		rnd = new Random (1);
 
 		for (int i = 0; i < max;  ++i)
 		{
 			ilrek.add (rnd.nextInt (100));
+			if (i % 10_000 == 0)
+				System.out.print (".");
 		}
+		System.out.println ();
 		
-		System.out.println (ilrek);
+		// System.out.println (ilrek);
 	}
 }
