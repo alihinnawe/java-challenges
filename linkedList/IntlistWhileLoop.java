@@ -21,8 +21,26 @@ public class Intlist {
         {
 			tmp = next.next; 
 		}
-		tmp.next = new Intlist (i); 
+		tmp = new Intlist (i); 
     }
+	/*
+    public void vdoadd (int i) {
+        while (next != null)
+        {
+			next.add (i); 
+		}
+		if (next == null
+    }
+    
+    public void kdoadd (int i) {
+       
+        while (next == null)
+        {
+			next = new Intlist (i); 
+		}
+    }
+    */
+
    
 	public void addList (Intlist list) {
 		if (list == null) 
