@@ -16,13 +16,14 @@ public class Intlist {
     }
 
     public void doadd (int i) {
-        Intlist tmp = next;
-        while (tmp != null)
+		Intlist neu = new Intlist (i); 
+        while (next != null)
         {
-			tmp = next.next; 
+			next = next.next; 
 		}
-		tmp = new Intlist (i); 
+		next = neu;         
     }
+    
 	/*
     public void vdoadd (int i) {
         while (next != null)
