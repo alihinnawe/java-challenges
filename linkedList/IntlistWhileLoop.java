@@ -1,3 +1,5 @@
+import java.util.Random; 
+
 public class Intlist {
 
     private int value;
@@ -14,27 +16,6 @@ public class Intlist {
         else 
             next.add (i);
     }
-
-    public void doadd (int i) {
-		Intlist tmp = this; 
-        while (tmp != null)
-        {
-			tmp = tmp.next; 
-		}
-		tmp = new Intlist (i); 
-		System.out.println (this);
-    }
-
-
-	/*  
-	 * 	public void vdoadd (int i) {
-        while (next != null)
-        {
-			next.add (i); 
-		}
-		if (next == null
-    }
-	*/
 	
     public void kkadd (int i) {
 		Intlist kkadd = this; 
@@ -80,15 +61,24 @@ public class Intlist {
 	
 	public static void main (String[] args) 
 	{
-		Intlist il = new Intlist (3); 
-		System.out.print ("" + il.size ());
-		System.out.println (" " + il.contains (3));
-		System.out.println (" " + il.contains (4));
-		il.add (4); 
-		System.out.print ("" + il.size ());
-		//System.out.println (" " + il.getLength ());
-		il.add (5); 
-		System.out.print ("" + il.size ());
-		//System.out.println (" " + il.getLength ());
+		Intlist ildo = new Intlist (3); 
+		Intlist ilrek = new Intlist (3); 
+		int max = 1000; 
+		Random rnd = new Random (1);
+		
+		for (int i = 0; i < max;  ++i)
+		{
+			ildo.kkadd (rnd.nextInt (100));
+		}
+		
+		System.out.println (ildo);
+		rnd = new Random (1);
+
+		for (int i = 0; i < max;  ++i)
+		{
+			ilrek.add (rnd.nextInt (100));
+		}
+		
+		System.out.println (ilrek);
 	}
 }
