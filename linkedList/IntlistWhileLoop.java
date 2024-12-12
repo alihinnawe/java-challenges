@@ -15,16 +15,17 @@ public class Intlist {
             next.add (i);
     }
 
+	/*    
     public void doadd (int i) {
-		Intlist neu = new Intlist (i); 
-        while (next != null)
+		Intlist tmp = next; 
+        while (tmp != null)
         {
-			next = next.next; 
+			tmp = tmp.next; 
 		}
-		next = neu;         
+		tmp = new Intlist (i); 
+		System.out.println (this);
     }
-    
-	/*
+
     public void vdoadd (int i) {
         while (next != null)
         {
@@ -32,16 +33,16 @@ public class Intlist {
 		}
 		if (next == null
     }
-    
-    public void kdoadd (int i) {
-       
-        while (next == null)
+	*/
+	
+    public void kkadd (int i) {
+		Intlist kkadd = this; 
+        while (kkadd.next != null)
         {
-			next = new Intlist (i); 
+			kkadd = kkadd.next;
 		}
+		kkadd.next = new Intlist (i); 
     }
-    */
-
    
 	public void addList (Intlist list) {
 		if (list == null) 
