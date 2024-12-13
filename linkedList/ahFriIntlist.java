@@ -47,6 +47,18 @@ public class ahFriIntlist {
 		return temp.getVal();
 	}
  
+ 	public Intlist without (int index) 
+	{
+		if (index == 0) 
+			return next;
+		else {
+			Intlist erg = new Intlist (value); 
+			Intlist rest = next.without (index -1); 
+			erg.addList (rest);
+			return erg; 
+		}	
+	}
+	
 	public static void main (String[] args) 
 	{
 		ahFriIntlist il = new ahFriIntlist (3); 
