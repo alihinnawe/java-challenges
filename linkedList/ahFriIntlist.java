@@ -29,18 +29,20 @@ public class ahFriIntlist {
 		return 1 + next.size (); 
 	}
 	 
-	public int get (int index) {
+	public int itemIndex (int index) {
 			ahFriIntlist temp = this; 
+			if (index >= size () || index < 0)
+				throw new IndexOutOfBoundsException ("ahFriIntlist out of bounds for max: " + size () + " with index: " + index);
 			for (int i = 0; i < index; ++i) {
 				temp = temp.next;
 			}
 			return temp.getVal();
 	}
     
-	public int getLast() {
+	public int getLastItem () {
 		ahFriIntlist temp = this;
 		while (temp.next != null) {
-		temp = temp.next;
+			temp = temp.next;
 		}
 		return temp.getVal();
 	}
@@ -53,11 +55,10 @@ public class ahFriIntlist {
 		il.add (6); 
 		il.add (7); 
 		il.add (8); 
-		int indexValue = il.get(0);
-		System.out.print ("" + il.size ());
-		System.out.print ("index value is:" + indexValue);
-		int lastItem = il.getLast();
-		System.out.print ("last item value:" + lastItem);
-	 
+		int indexValue = il.itemIndex (10);
+		System.out.println ("size: " + il.size ());
+		System.out.println ("index value is 3? " + indexValue);
+		int lastItem = il.getLastItem();
+		System.out.println ("last item value 8?" + lastItem);
 	}
 }
