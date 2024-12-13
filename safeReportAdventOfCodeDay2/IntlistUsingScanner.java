@@ -84,7 +84,7 @@ public class Intlist {
 
 			while (wertescanner.hasNext ())
 			{
-				int wert = scanner.nextInt ();
+				int wert = wertescanner.nextInt ();
 				il.add (wert); 
 			}
 			if ((il.allUp () || il.allDown ()) && il.inRange (3))
