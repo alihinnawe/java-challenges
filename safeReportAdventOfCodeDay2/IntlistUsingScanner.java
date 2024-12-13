@@ -70,18 +70,19 @@ public class Intlist {
 		// File file = new File ("./aoc02a.txt");
 		File file = new File ("./aoc/aoc02.txt");
 
-		// int zeile = 0;
+		int zeile = 0;
 		int matches = 0; 
 		
 		Scanner scanner = new Scanner (file);
 		while (scanner.hasNext ())
 		{
 			String line = scanner.nextLine (); 
+			System.out.println ("Zeile: " + zeile++ + "\t" + line );
 			Scanner wertescanner = new Scanner (line); 
 			int startwert = wertescanner.nextInt ();
 			Intlist il = new Intlist (startwert); 
 
-			while (scanner.hasNext ())
+			while (wertescanner.hasNext ())
 			{
 				int wert = scanner.nextInt ();
 				il.add (wert); 
