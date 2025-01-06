@@ -4,7 +4,7 @@ public enum Log1 {
     public void log(String message) {
         switch (this) {
             case INFO -> System.out.println("INFO: " + message); 
-            case WARN -> System.out.println("\u001B[33mWARN: " + message + "\u001B[0m"); // Yellow
+            case WARN -> System.out.println("\u001B[33mWARN: " + message + "\u001B[0m");
             case ERR -> System.err.println("ERR: " + message);  
         }
     }
