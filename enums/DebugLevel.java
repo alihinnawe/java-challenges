@@ -48,7 +48,7 @@ public class Collatz {
 					return collatz (newindx);
 				else
 					{
-						log ("Warnung! Maxlen of Arr exceeded!", Loglevel.WARN);
+						log ("Warnung! Maxlen of Arr exceeded! " + newindx, Loglevel.WARN);
 						return false; 
 					}
 			}
