@@ -58,7 +58,7 @@ public class Collatz {
 		{
 			protocol[1] = true; 
 
-			for (int i = 0; i <= MAX; ++i)
+			for (int i = 1; i <= MAX; ++i)
 			{
 				log (i + ": ", Loglevel.INFO); 
 				boolean res = secureCollatz (i);
