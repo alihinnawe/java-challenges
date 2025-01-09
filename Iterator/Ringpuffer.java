@@ -30,4 +30,59 @@ public class Ringpuffer implements Iterator <String>
 			}
 			len  = puffer.length; 
 		}
+		
+		public static void main (String[] args) 
+		{
+			String [] param = null;
+			if (args.length == 1 && args[0].equals ("?"))
+			{
+				usage ();
+				System.exit (0); 
+			}
+			param = args;
+			
+			Ringpuffer rp = new Ringpuffer (param);
+			// ArrayList <String> al = new ArrayList <> ();
+			int counter = 0;
+			
+			Iterable <String> iter = new RingpufferIterable (rp); 
+			/*
+			for (String s: iter)
+			{
+				al.add (s);
+				if (counter++ > 50)
+					break; 
+			}
+			*/
+			
+			// Iterable <String> aliter = (Iterable <String>) al;
+			// Iterable <String> aliter = al;
+			for (String s: iter)
+			{
+				System.out.print ("-" + s);
+				if (counter++ > 50)
+					break; 
+			}
+			System.out.println ();
+		}
+		
+		public static void usage ()
+		{
+			System.out.println ("Usage:\tjava Ringpuffer RING PUFFER Initialiserungsliste ...");
+		}
 }
+
+class RingpufferIterable implements Iterable <String> {
+	
+	private Ringpuffer ringpuffer;
+	
+	public RingpufferIterable (Ringpuffer rp)
+	{
+		ringpuffer = rp;
+	}
+	
+	public Iterator <String> iterator () {
+		return ringpuffer; 
+	}
+}
+
