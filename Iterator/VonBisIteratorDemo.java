@@ -3,17 +3,20 @@ import java.util.Iterator;
 class VonBisIterator implements Iterator <Integer> 
 {
 	private int current;
-	private final int stop; 
+	private final int stop, stepwidth; 
 	
-	public VonBisIterator (int start, int stop)
+	public VonBisIterator (int start, int stop, int stepwidth)
 	{
 		current = start;
 		this.stop = stop;
+		this.stepwidth = stepwidth;
 	}
 	
 	public Integer next ()
 	{
-		return current++; 
+		int c = current;
+		current += stepwidth;
+		return c; 
 	}
 	
 	public boolean hasNext ()
@@ -42,24 +45,18 @@ class VonBisIteratorDemo
 {
 	public static void main (String[] args) 
 	{
-		VonBisIterator vbi = new VonBisIterator (10, 40);
-		// for (int i : vbi)
-		for (int i = vbi.next (); vbi.hasNext (); i = vbi.next ())
-		{
-			System.out.print (" " + i);
-		}
 		/*
+		VonBisIterator vbi = new VonBisIterator (10, 40, 1);
 		while (vbi.hasNext ())
 		{
 			System.out.print ("> " + vbi.next ());
 		}
 		*/
-		/*
-		VonBisIterable vbi = new VonBisIterable (22, 33);
+		
+		VonBisIterable vbi = new VonBisIterable (22, 33, 1);
 		for (int i : vbi)
 		{
 			System.out.print ("> " + i);
 		}
-		*/
 	}
 }
