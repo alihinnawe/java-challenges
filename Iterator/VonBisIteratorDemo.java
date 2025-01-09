@@ -22,6 +22,7 @@ class VonBisIterator implements Iterator <Integer>
 	}
 }
 
+/** Iterable für for-each-Loop-Syntax nötig */
 class VonBisIterable implements Iterable <Integer> 
 {
 	// private VonBisIterator iter;
@@ -39,19 +40,26 @@ class VonBisIterable implements Iterable <Integer>
 
 class VonBisIteratorDemo 
 {
-	
 	public static void main (String[] args) 
 	{
-		/*
 		VonBisIterator vbi = new VonBisIterator (10, 40);
+		// for (int i : vbi)
+		for (int i = vbi.next (); vbi.hasNext (); i = vbi.next ())
+		{
+			System.out.print (" " + i);
+		}
+		/*
 		while (vbi.hasNext ())
 		{
 			System.out.print ("> " + vbi.next ());
-		}*/
+		}
+		*/
+		/*
 		VonBisIterable vbi = new VonBisIterable (22, 33);
 		for (int i : vbi)
 		{
 			System.out.print ("> " + i);
 		}
+		*/
 	}
 }
