@@ -24,11 +24,11 @@ class VonBisIterator implements Iterator <Integer>
 
 class VonBisIterable implements Iterable <Integer> 
 {
-	public Iterator iterator () {
+	public Iterator <Integer> iterator () {
 		return iter;
 	}
 
-	Iterator iter;
+	Iterator <Integer> iter;
 
 	public VonBisIterable (int start, int stop)
 	{
