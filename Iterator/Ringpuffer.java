@@ -34,10 +34,14 @@ public class Ringpuffer implements Iterator <String>
 		public static void main (String[] args) 
 		{
 			String [] param = null;
-			if (args.length == 1 && args[0].equals ("?"))
+			if (args.length == 1 && args[0].equals ("h"))
 			{
 				usage ();
 				System.exit (0); 
+			}
+			else 
+			{
+					System.out.println ("<" + args[0] + ">");
 			}
 			param = args;
 			
