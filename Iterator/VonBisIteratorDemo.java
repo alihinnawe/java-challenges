@@ -24,11 +24,11 @@ class VonBisIterator implements Iterator <Integer>
 
 class VonBisIterable implements Iterable <Integer> 
 {
+	private VonBisIterator <Integer> iter;
+
 	public Iterator <Integer> iterator () {
 		return iter;
 	}
-
-	Iterator <Integer> iter;
 
 	public VonBisIterable (int start, int stop)
 	{
@@ -41,10 +41,16 @@ class VonBisIteratorDemo
 	
 	public static void main (String[] args) 
 	{
+		/*
 		VonBisIterator vbi = new VonBisIterator (10, 40);
 		while (vbi.hasNext ())
 		{
 			System.out.print ("> " + vbi.next ());
+		}*/
+		VonBisIterable vbi = new VonBisIterable (22, 33);
+		for (int i : vbi)
+		{
+			System.out.print ("> " + i);
 		}
 	}
 }
