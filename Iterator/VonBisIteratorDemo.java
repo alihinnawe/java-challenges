@@ -24,7 +24,8 @@ class VonBisIterator implements Iterator <Integer>
 
 class VonBisIterable implements Iterable <Integer> 
 {
-	private VonBisIterator <Integer> iter;
+	// private VonBisIterator iter;
+	private Iterator <Integer> iter;
 
 	public Iterator <Integer> iterator () {
 		return iter;
