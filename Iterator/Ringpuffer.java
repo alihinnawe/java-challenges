@@ -5,7 +5,11 @@ public class Ringpuffer implements Iterator <String>
 		final protected String [] puffer;
 		final int len; 
 		private int pos = 0; 
-		
+		/**
+		* @return puffer [(pos++ % len)]
+		* suppose len = 9. We start with index 0, 0 % len = 0, after that index 1 1% len = 1, 
+		* then 2 % len = 2 , till we reach 9 % len = 0. and start over the first index again.
+		*/
 		public String next ()
 		{
 			return puffer [(pos++ % len)];
@@ -89,4 +93,3 @@ class RingpufferIterable implements Iterable <String> {
 		return ringpuffer; 
 	}
 }
-
