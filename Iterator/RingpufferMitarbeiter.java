@@ -70,7 +70,7 @@ public class Ringpuffer <T> implements Iterator <T>
 				{
 						System.out.print ("Supermitarbeiter");
 				}
-				System.out.print (":" + m);
+				System.out.println (":" + m);
 				if (counter++ > 20)
 					break; 
 			}		
