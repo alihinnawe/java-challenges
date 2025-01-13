@@ -25,7 +25,7 @@ public class HelloSwingWorld extends JFrame implements Runnable {
 	
 	private JPanel [] p = new JPanel [5];
 	
-	private void initButtons ()
+	private void initButtons (JPanel target)
 	{
 		JButton ok = new JButton ("ok");
 		JButton esc = new JButton ("esc");
@@ -33,8 +33,8 @@ public class HelloSwingWorld extends JFrame implements Runnable {
 		 ok.addActionListener (okbl);
 		esc.addActionListener (okbl);
 		
-		p[3].add (ok);
-		p[3].add (esc);		
+		target.add (ok);
+		target.add (esc);		
 	}
 	
 	private JPanel genCenterPanel ()
@@ -45,18 +45,36 @@ public class HelloSwingWorld extends JFrame implements Runnable {
 		for (int i = 0; i < 3; ++i)
 		{
 			JPanel sub = new JPanel ();
-			sub.setLayout (new BoxLayout (sub, BoxLayout.LINE_AXIS));
+			// sub.setLayout (new BoxLayout (sub, BoxLayout.LINE_AXIS));
+			// sub.setLayout (new FlowLayout ());
 			JTextField lbl = new  JTextField (12); 
 			lbl.setText (label[i]);
 			lbl.setEditable (false);
 			sub.add (lbl);
 			sub.add (new JTextField (20)); 
+			/* Test, was passiert, wenn der Platz nicht reicht,
+			 * je nach Layout 
 			for (int j = 0; j < 15; ++j)
 				sub.add (new JLabel ("foobar " + j));			
+			*/
 			sub.setBorder (BorderFactory.createEtchedBorder ());
 			jp.add (sub);
 		}
 		return jp; 
+	}
+	
+	private JPanel genSouthPanel ()
+	{
+		JPanel jp = new JPanel ();
+		jp.setLayout (new BoxLayout (jp, BoxLayout.PAGE_AXIS));
+		// Ctrlbar 
+		JPanel ctrlPanel = new JPanel ();
+		initButtons (ctrlPanel);		
+		jp.add (ctrlPanel);
+		// Statusbar := JLabel 
+		JLabel jl = new JLabel ("Statusbar: ...");
+		jp.add (jl);
+		return jp;
 	}
 	
 	@Override public void run ()
@@ -78,8 +96,10 @@ public class HelloSwingWorld extends JFrame implements Runnable {
 		}
 		p[4] = genCenterPanel ();
 		add (p[4], BorderLayout.CENTER);
-		initButtons ();
-		
+
+		p[3] = genSouthPanel ();
+		add (p[3], BorderLayout.SOUTH);
+	
 		pack (); 
 		setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE); 
 		setVisible (true);		
