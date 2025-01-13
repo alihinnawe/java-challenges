@@ -45,11 +45,14 @@ public class HelloSwingWorld extends JFrame implements Runnable {
 		for (int i = 0; i < 3; ++i)
 		{
 			JPanel sub = new JPanel ();
+			sub.setLayout (new BoxLayout (sub, BoxLayout.LINE_AXIS));
 			JTextField lbl = new  JTextField (12); 
 			lbl.setText (label[i]);
 			lbl.setEditable (false);
 			sub.add (lbl);
 			sub.add (new JTextField (20)); 
+			for (int j = 0; j < 15; ++j)
+				sub.add (new JLabel ("foobar " + j));			
 			sub.setBorder (BorderFactory.createEtchedBorder ());
 			jp.add (sub);
 		}
