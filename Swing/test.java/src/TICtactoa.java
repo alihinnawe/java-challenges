@@ -22,7 +22,9 @@ public class TICtactoa {
 
                 if (i == 0) {
                     topPanel.add(button);
-                    button.addActionListener(new ButtonListener())
+                   // button.addActionListener(new ButtonListener())
+                   
+                   //TODO add action listener to the button.
                 } else if (i == 1) {
                     centerPanel.add(button);
                 } else {
