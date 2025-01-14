@@ -42,9 +42,9 @@ public class TICtactoa {
         frame.pack();
         frame.setVisible(true);
     }
-    
+     /*
     public class ButtonListener implements ActionListener 
-    {
+    {      
 			public void actionPerformed (ActionEvent e)
 			{
 				if(e.getActionCommand().equals(" ")
@@ -54,7 +54,7 @@ public class TICtactoa {
 				}
 			
 		}
-
+	*/
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
             new TICtactoa();
