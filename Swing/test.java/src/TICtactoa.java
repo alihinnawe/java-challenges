@@ -22,6 +22,7 @@ public class TICtactoa {
 
                 if (i == 0) {
                     topPanel.add(button);
+                    button.addActionListener(new ButtonListener())
                 } else if (i == 1) {
                     centerPanel.add(button);
                 } else {
@@ -39,6 +40,18 @@ public class TICtactoa {
         frame.pack();
         frame.setVisible(true);
     }
+    
+    public class ButtonListener implements ActionListener 
+    {
+			public void actionPerformed (ActionEvent e)
+			{
+				if(e.getActionCommand().equals(" ")
+				{
+					System.out.print(e);
+					}
+				}
+			
+		}
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
