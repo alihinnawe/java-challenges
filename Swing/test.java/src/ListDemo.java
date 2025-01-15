@@ -5,32 +5,39 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class ListDemo extends JFrame implements Runnable, ActionListener {
-    String[] arr = {"Ali", "Hinnawe", "Lebanon", "Beirut"};
-    Vector<String> v = new Vector<>();
-
+    Vector<String> vector1 = new Vector<>();
+    Vector<String> vector2 = new Vector<>();
     private JTextField textField1;
+    private JTextField textField2;
     private JList<String> jlist1;
+    private JList<String> jlist2;
 
     public ListDemo(String title) {
         setTitle(title);
         setSize(400, 400);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        vector1.add("Ali");
+        vector1.add("Hinnawe");
+        vector1.add("Lebanon");
+        vector1.add("Beirut");
+
+        vector2.add("Name");
+        vector2.add("FName");
+        vector2.add("Country");
+        vector2.add("City");
     }
 
     public void run() {
         JPanel mainPanel = new JPanel();
-        v.add("Name");
-        v.add("FName");
-        v.add("Country");
-        v.add("City");
 
         JPanel p1 = new JPanel();
         JPanel p2 = new JPanel();
         JPanel p3 = new JPanel();
         JPanel p4 = new JPanel();
 
-        jlist1 = new JList<>(arr);
-        JList<String> jlist2 = new JList<>(v);
+        jlist1 = new JList<>(vector1);
+        jlist2 = new JList<>(vector2);
 
         p1.add(jlist1);
         p2.add(jlist2);
@@ -50,16 +57,16 @@ public class ListDemo extends JFrame implements Runnable, ActionListener {
         p4.add(button3);
         p4.add(button4);
 
-        textField1 = new JTextField("textField1");
+        textField1 = new JTextField();
         textField1.setColumns(20);
-        JTextField textField2 = new JTextField("textField2");
+        textField2 = new JTextField();
         textField2.setColumns(20);
         p3.add(textField1);
         p3.add(textField2);
 
-        JTextField textField3 = new JTextField("textField3");
+        JTextField textField3 = new JTextField();
         textField3.setColumns(20);
-        JTextField textField4 = new JTextField("textField4");
+        JTextField textField4 = new JTextField();
         textField4.setColumns(20);
         p4.add(textField3);
         p4.add(textField4);
@@ -76,18 +83,21 @@ public class ListDemo extends JFrame implements Runnable, ActionListener {
         setVisible(true);
     }
 
-    @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equals("Button1")) {
             String text = textField1.getText();
             if (!text.isEmpty()) {
-                String[] newArr = new String[arr.length + 1];
-                System.arraycopy(arr, 0, newArr, 0, arr.length);
-                newArr[arr.length] = text;
-                arr = newArr;
-                jlist1.setListData(arr);
-                textField1.setText("");
+                vector1.add(text);
             }
+            jlist1.setListData(vector1);
+            textField1.setText("");
+        } else if (e.getActionCommand().equals("Button2")) {
+            String text = textField2.getText();
+            if (!text.isEmpty()) {
+                vector2.add(text);
+            }
+            jlist2.setListData(vector2);
+            textField2.setText("");
         } else {
             System.out.println(((JButton) e.getSource()).getText() + " clicked!");
         }
