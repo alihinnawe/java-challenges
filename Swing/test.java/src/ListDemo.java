@@ -99,7 +99,7 @@ public class ListDemo extends JFrame implements Runnable, ActionListener {
             jlist2.setListData(vector2);
             textField2.setText("");
         } else {
-            System.out.println(((JButton) e.getSource()).getText() + " clicked!");
+            System.out.println(((JButton) e.getSource()).getText() + " clicked");
         }
     }
 
