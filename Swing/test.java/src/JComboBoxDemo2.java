@@ -3,14 +3,14 @@ import java.awt.event.*;
 import javax.swing.*;
 import java.util.*;
 
-public class JComboBoxDemo implements Runnable 
+public class JComboBoxDemo2 implements Runnable 
 {
 	private JFrame jframe;
 	private JComboBox <String> jcmbKurs;
 	private int oldindex = 0;
 	private String auswahl = "";
 	
-	public JComboBoxDemo (String title)
+	public JComboBoxDemo2 (String title)
 	{
 		jframe = new JFrame (title);
 		jframe.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
@@ -43,13 +43,15 @@ public class JComboBoxDemo implements Runnable
 					auswahl = ae.getActionCommand ();
 					System.out.println ("gewählt: " + auswahl);
 					jpDetails.updateUI ();
-					// jframe.updateUI ();
+					// nicht ganz richtig. Aktualisiert erst,
+					// wenn der RB-Eintrag geklickt wird.
+					jframe.pack ();
 				}
 			});
 			bg.add (jrb[i]);
 			jpDetails.add (jrb[i]);			
+			// jframe.pack ();
 		}
-		jframe.repaint ();
 		return jpDetails;
 	}
 	
@@ -97,7 +99,7 @@ public class JComboBoxDemo implements Runnable
 	public static void main (String[] args) 
 	{
 		SwingUtilities.invokeLater (
-			new JComboBoxDemo ("JComboBoxDemo2 (Dozent/Mi)")
+			new JComboBoxDemo2 ("JComboBoxDemo2 (Dozent/Mi)")
 		);
 	}
 	
