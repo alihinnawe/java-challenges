@@ -1,14 +1,11 @@
 import java.awt.*;
 import javax.swing.*;
+import java.util.*;
 
-public class ListDemo extends JFrame implements Runnable {
-
+public class ListDemo extends JFrame implements Runnable 
+{
     String[] arr = {"Ali", "Hinnawe", "Lebanon", "Beirut"};
 	Vector <String> v =  new Vector <> ();
-	v.add("Name");
-	v.add("FName");
-	v.add("Country");
-	v.add("City");
 
     public ListDemo(String title) {
         setTitle(title);
@@ -18,6 +15,12 @@ public class ListDemo extends JFrame implements Runnable {
 
     public void run() {
         JPanel mainPanel = new JPanel();
+
+		v.add("Name");
+		v.add("FName");
+		v.add("Country");
+		v.add("City");
+
         JPanel p1 = new JPanel();
         JPanel p2 = new JPanel();
 
