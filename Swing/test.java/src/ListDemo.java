@@ -20,8 +20,10 @@ public class ListDemo extends JFrame implements Runnable {
 		setVisible(true);
 		pack();
 	}
-	public static void main (String[] args) {
-		
-		}
-
+	public static void main (String[] args) 
+	{
+		SwingUtilities.invokeLater (
+			new ListDemo ("ListDemo")
+		);
+	}
 }
