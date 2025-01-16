@@ -86,7 +86,6 @@ public class AhDonListDemo extends JFrame implements Runnable {
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new AhDonListDemo("ListDemo"));
     }
-    .getSelectedValuesList()
 
     // Define the Button12Listener class
     class Button12Listener implements ActionListener {
