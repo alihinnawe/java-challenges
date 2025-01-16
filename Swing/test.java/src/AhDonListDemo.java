@@ -4,7 +4,8 @@ import java.util.Vector;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class ListDemo extends JFrame implements Runnable, ActionListener {
+public class AhDonListDemo extends JFrame implements Runnable {
+	
     Vector<String> vector1 = new Vector<>();
     Vector<String> vector2 = new Vector<>();
     private JTextField textField1;
@@ -12,7 +13,7 @@ public class ListDemo extends JFrame implements Runnable, ActionListener {
     private JList<String> jlist1;
     private JList<String> jlist2;
 
-    public ListDemo(String title) {
+    public AhDonListDemo(String title) {
         setTitle(title);
         setSize(400, 400);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -47,11 +48,6 @@ public class ListDemo extends JFrame implements Runnable, ActionListener {
         JButton button3 = new JButton("Button3");
         JButton button4 = new JButton("Button4");
 
-        button1.addActionListener(this);
-        button2.addActionListener(this);
-        button3.addActionListener(this);
-        button4.addActionListener(this);
-
         p3.add(button1);
         p3.add(button2);
         p4.add(button3);
@@ -63,6 +59,18 @@ public class ListDemo extends JFrame implements Runnable, ActionListener {
         textField2.setColumns(20);
         p3.add(textField1);
         p3.add(textField2);
+
+		ActionListener al1 = new Button12Listener (
+			textField1, vector1, jlist1);
+
+		ActionListener al2 = new Button12Listener (
+			textField2,	vector2, jlist2);
+
+
+        button1.addActionListener (al1);
+        button2.addActionListener (al2);
+        button3.addActionListener (al1);
+        button4.addActionListener (al2);
 
         JTextField textField3 = new JTextField();
         textField3.setColumns(20);
@@ -83,23 +91,7 @@ public class ListDemo extends JFrame implements Runnable, ActionListener {
         setVisible(true);
     }
 
-    public void actionPerformed(ActionEvent e) {
-        if (e.getActionCommand().equals("Button1")) {
-            String text = textField1.getText();
-			vector1.add(text);
-            jlist1.setListData(vector1);
-            textField1.setText("");
-        } else if (e.getActionCommand().equals("Button2")) {
-            String text = textField2.getText();
-			vector2.add(text);
-            jlist2.setListData(vector2);
-            textField2.setText("");
-        } else {
-            System.out.println(((JButton) e.getSource()).getText() + " clicked");
-        }
-    }
-
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(new ListDemo("ListDemo"));
+        SwingUtilities.invokeLater (new AhDonListDemo("ListDemo"));
     }
 }
