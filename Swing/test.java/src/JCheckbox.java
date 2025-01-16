@@ -1,32 +1,37 @@
 import java.io.*;
 import java.util.*;
-import java.awt.*;
-import javax.swing.*;
-import java.util.Vector;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
-public class TrueFalse {
+public class JCheckbox {
 
-	public static void main (String [] args) throws ArrayIndexOutOfBoundsException, IOException
-	{
-		// File file = new File ("./keywords.java.txt");
-		File file = new File ("./keywords.java.txt");
-		
-		Scanner scanner = new Scanner (file);
-		while (scanner.hasNext ()) 
-		{
-			String line = scanner.nextLine ();
-			Scanner wertescanner = new Scanner (line); 
-			int startwert = wertescanner.nextInt ();
-	
-			while (wertescanner.hasNext ())
-			{
-				int wert = wertescanner.nextInt ();
-				il.add (wert); 
-			}
-	}
+    public static void main(String[] args) throws ArrayIndexOutOfBoundsException, IOException {
 
-	}
+        Vector<Integer> firstColumn = new Vector<>();
+        Vector<String> secondColumn = new Vector<>();
 
+        File file = new File("./keywords.java.txt");
+
+        Scanner scanner = new Scanner(file);
+        while (scanner.hasNextLine()) {
+            String line = scanner.nextLine();
+            Scanner lineScanner = new Scanner(line);
+
+            if (lineScanner.hasNextInt()) {
+                int firstValue = lineScanner.nextInt();
+                firstColumn.add(firstValue);
+            }
+
+            if (lineScanner.hasNext()) {
+                String secondValue = lineScanner.next();
+                secondColumn.add(secondValue);
+            }
+
+            lineScanner.close();
+        }
+
+        scanner.close();
+
+        // Print the vectors to verify the contents
+        System.out.println("First Column (Integers): " + firstColumn);
+        System.out.println("Second Column (Keywords): " + secondColumn);
+    }
 }
