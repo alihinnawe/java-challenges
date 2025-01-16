@@ -2,8 +2,8 @@ public class TrueFalse {
 
 	public static void main (String [] args) throws ArrayIndexOutOfBoundsException, IOException
 	{
-		// File file = new File ("./aoc02a.txt");
-		File file = new File ("./aoc/aoc02.txt");
+		// File file = new File ("./keywords.java.txt");
+		File file = new File ("./keywords.java.txt");
 
 		int zeile = 0;
 		int matches = 0; 
