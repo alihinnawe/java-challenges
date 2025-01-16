@@ -5,7 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class AhDonListDemo extends JFrame implements Runnable {
-	
+
     Vector<String> vector1 = new Vector<>();
     Vector<String> vector2 = new Vector<>();
     private JTextField textField1;
@@ -40,8 +40,8 @@ public class AhDonListDemo extends JFrame implements Runnable {
         jlist1 = new JList<>(vector1);
         jlist2 = new JList<>(vector2);
 
-        p1.add(jlist1);
-        p2.add(jlist2);
+        p1.add(new JScrollPane(jlist1));
+        p2.add(new JScrollPane(jlist2));
 
         JButton button1 = new JButton("Button1");
         JButton button2 = new JButton("Button2");
@@ -53,29 +53,21 @@ public class AhDonListDemo extends JFrame implements Runnable {
         p4.add(button3);
         p4.add(button4);
 
-        textField1 = new JTextField();
-        textField1.setColumns(20);
-        textField2 = new JTextField();
-        textField2.setColumns(20);
+        textField1 = new JTextField(20);
+        textField2 = new JTextField(20);
         p3.add(textField1);
         p3.add(textField2);
 
-		ActionListener al1 = new Button12Listener (
-			textField1, vector1, jlist1);
+        ActionListener al1 = new Button12Listener(textField1, vector1, jlist1);
+        ActionListener al2 = new Button12Listener(textField2, vector2, jlist2);
 
-		ActionListener al2 = new Button12Listener (
-			textField2,	vector2, jlist2);
+        button1.addActionListener(al1);
+        button2.addActionListener(al2);
+        button3.addActionListener(al1);
+        button4.addActionListener(al2);
 
-
-        button1.addActionListener (al1);
-        button2.addActionListener (al2);
-        button3.addActionListener (al1);
-        button4.addActionListener (al2);
-
-        JTextField textField3 = new JTextField();
-        textField3.setColumns(20);
-        JTextField textField4 = new JTextField();
-        textField4.setColumns(20);
+        JTextField textField3 = new JTextField(20);
+        JTextField textField4 = new JTextField(20);
         p4.add(textField3);
         p4.add(textField4);
 
@@ -92,6 +84,29 @@ public class AhDonListDemo extends JFrame implements Runnable {
     }
 
     public static void main(String[] args) {
-        SwingUtilities.invokeLater (new AhDonListDemo("ListDemo"));
+        SwingUtilities.invokeLater(new AhDonListDemo("ListDemo"));
+    }
+
+    // Define the Button12Listener class
+    class Button12Listener implements ActionListener {
+        private JTextField textField;
+        private Vector<String> vector;
+        private JList<String> jlist;
+
+        public Button12Listener(JTextField textField, Vector<String> vector, JList<String> jlist) {
+            this.textField = textField;
+            this.vector = vector;
+            this.jlist = jlist;
+        }
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            String text = textField.getText();
+            if (!text.isEmpty()) {
+                vector.add(text);
+                jlist.setListData(vector); // Update the JList
+                textField.setText(""); // Clear the text field
+            }
+        }
     }
 }
