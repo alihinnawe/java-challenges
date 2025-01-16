@@ -17,7 +17,7 @@ public class JCheckboxWithoutFileUpdate extends JFrame {
         secondColumn = new Vector<>();
         checkBoxPanel = new JPanel();
 		buttonPanel = new JPanel();
-		updateButton = new JButton();
+		updateButton = new JButton("update");
 		buttonPanel.add(updateButton);
         checkBoxPanel.setLayout(new BoxLayout(checkBoxPanel, BoxLayout.Y_AXIS));
 		add(buttonPanel, BorderLayout.SOUTH);
