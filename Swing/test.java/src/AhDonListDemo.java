@@ -86,6 +86,7 @@ public class AhDonListDemo extends JFrame implements Runnable {
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new AhDonListDemo("ListDemo"));
     }
+    .getSelectedValuesList()
 
     // Define the Button12Listener class
     class Button12Listener implements ActionListener {
@@ -104,9 +105,11 @@ public class AhDonListDemo extends JFrame implements Runnable {
             String text = textField.getText();
             if (!text.isEmpty()) {
                 vector.add(text);
-                jlist.setListData(vector); // Update the JList
-                textField.setText(""); // Clear the text field
+                jlist.setListData(vector); 
+                textField.setText(""); 
+                
             }
+            
         }
     }
 }
