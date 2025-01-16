@@ -1,5 +1,10 @@
 import java.io.*;
 import java.util.*;
+import java.awt.*;
+import javax.swing.*;
+import java.util.Vector;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class JCheckbox {
 
@@ -30,8 +35,6 @@ public class JCheckbox {
 
         scanner.close();
 
-        // Print the vectors to verify the contents
-        System.out.println("First Column (Integers): " + firstColumn);
-        System.out.println("Second Column (Keywords): " + secondColumn);
+
     }
 }
