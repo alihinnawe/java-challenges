@@ -3,19 +3,24 @@ import java.util.*;
 import javax.swing.*;
 import java.awt.*;
 
-public class JCheckbox extends JFrame {
+public class JCheckboxWithoutFileUpdate extends JFrame {
 
     private Vector<Integer> firstColumn;
     private Vector<String> secondColumn;
     private JPanel checkBoxPanel;
-
-    public JCheckbox(String title) {
+	private JButton updateButton;
+	private JPanel buttonPanel;
+	
+    public JCheckboxWithoutFileUpdate(String title) {
         super(title);
         firstColumn = new Vector<>();
         secondColumn = new Vector<>();
         checkBoxPanel = new JPanel();
+		buttonPanel = new JPanel();
+		updateButton = new JButton();
+		buttonPanel.add(updateButton);
         checkBoxPanel.setLayout(new BoxLayout(checkBoxPanel, BoxLayout.Y_AXIS));
-
+		add(buttonPanel, BorderLayout.SOUTH);
         readFile();
 
         for (String keyword : secondColumn) {
@@ -53,6 +58,10 @@ public class JCheckbox extends JFrame {
         } catch (FileNotFoundException e) {
             System.exit(1);
         }
+    }
+	
+	public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> new JCheckboxWithoutFileUpdate("JCheckbox Example"));
     }
 
 }
