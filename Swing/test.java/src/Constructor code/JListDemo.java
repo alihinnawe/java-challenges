@@ -3,9 +3,9 @@ import java.awt.*;
 import java.awt.event.*;
 import java.util.*;
 
-public class JListDemoTutorSolution extends JFrame implements Runnable
+public class JListDemo extends JFrame implements Runnable
 {
-	public JListDemoTutorSolution (String title) {
+	public JList (String title) {
 		super (title);
 		setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
 	}
@@ -205,6 +205,6 @@ public class JListDemoTutorSolution extends JFrame implements Runnable
 	
 	public static void main (String[] args)
 	{
-		SwingUtilities.invokeLater (new JListDemoTutorSolution ("JListDemo v. 0.1 alpha"));
+		SwingUtilities.invokeLater (new JListDemo ("JListDemo v. 0.1 alpha"));
 	}
 }
