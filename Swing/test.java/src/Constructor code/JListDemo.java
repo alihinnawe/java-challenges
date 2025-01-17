@@ -5,7 +5,7 @@ import java.util.*;
 
 public class JListDemo extends JFrame implements Runnable
 {
-	public JList (String title) {
+	public JListDemo (String title) {
 		super (title);
 		setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
 	}
