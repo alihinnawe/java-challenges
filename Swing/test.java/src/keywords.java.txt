@@ -1,4 +1,4 @@
-0 abstract
+4 abstract
 0 assert
 0 boolean
 0 break

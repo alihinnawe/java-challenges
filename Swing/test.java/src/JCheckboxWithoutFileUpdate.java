@@ -43,10 +43,14 @@ public class JCheckboxWithoutFileUpdate extends JFrame {
                 String line = scanner.nextLine();
                 Scanner lineScanner = new Scanner(line);
 
-                if (lineScanner.hasNextInt()) {
-                    int firstValue = lineScanner.nextInt();
-                    firstColumn.add(firstValue);
-                }
+				if (lineScanner.hasNextInt()) {
+					int firstValue = lineScanner.nextInt();
+					if (firstValue == 0 || firstValue == 1) {
+						firstColumn.add(firstValue);
+					} else {
+						continue;
+					}
+				}
 
                 if (lineScanner.hasNext()) {
                     String secondValue = lineScanner.next();
