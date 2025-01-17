@@ -14,10 +14,10 @@ public class ListDemo extends JFrame implements Runnable, ActionListener {
     private JTextField textField2;
     private JTextField textField3;
     private JTextField textField4;
-
     private JList<String> jlist1;
     private JList<String> jlist2;
-
+    private JScrollPane jScrollPaneP1;
+    private JScrollPane jScrollPaneP2;
 
     public ListDemo(String title) {
         setTitle(title);
@@ -77,10 +77,11 @@ public class ListDemo extends JFrame implements Runnable, ActionListener {
         p3.add(textField2);
         p4.add(textField3);
         p4.add(textField4);
-
         mainPanel.setLayout(new BorderLayout());
-        mainPanel.add(p1, BorderLayout.WEST);
-        mainPanel.add(p2, BorderLayout.EAST);
+        jScrollPaneP1 = new JScrollPane();
+        jScrollPaneP2 = new JScrollPane();
+        mainPanel.add(new JScrollPane(p1), BorderLayout.WEST);
+        mainPanel.add(new JScrollPane(p2), BorderLayout.EAST);
         mainPanel.add(p3, BorderLayout.NORTH);
         mainPanel.add(p4, BorderLayout.SOUTH);
         add(mainPanel);
@@ -118,9 +119,9 @@ public class ListDemo extends JFrame implements Runnable, ActionListener {
                 textField3.setText(textJlist1.toString());
             }
             if (textJlist1.isEmpty())
-                {
-                    textField2.setText("[]");
-                }
+            {
+                textField2.setText("[]");
+            }
             else
             {
                 List<String> textJlist2 = jlist2.getSelectedValuesList();
