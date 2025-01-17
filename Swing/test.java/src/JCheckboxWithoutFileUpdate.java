@@ -23,8 +23,8 @@ public class JCheckboxWithoutFileUpdate extends JFrame {
 		add(buttonPanel, BorderLayout.SOUTH);
         readFile();
 
-        for (String keyword : secondColumn) {
-            JCheckBox checkBox = new JCheckBox(keyword);
+        for (String word : secondColumn) {
+            JCheckBox checkBox = new JCheckBox(word);
             checkBoxPanel.add(checkBox);
         }
 
