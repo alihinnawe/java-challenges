@@ -30,8 +30,11 @@ public class JCheckboxWithoutFileUpdate extends JFrame implements Runnable {
 		add(buttonPanel, BorderLayout.SOUTH);
         readFile();
 
-        for (String word : secondColumn) {
-            JCheckBox checkBox = new JCheckBox(word);
+        // for (String word : secondColumn) {
+        for (int i = 0; i < secondColumn.size (); ++i) {
+			String word = secondColumn.get (i);
+			int j = firstColumn.get(i);
+            JCheckBox checkBox = new JCheckBox (word, (i==1));
             checkBoxPanel.add(checkBox);
         }
 
@@ -46,7 +49,7 @@ public class JCheckboxWithoutFileUpdate extends JFrame implements Runnable {
 
     private void readFile() {
         File file = new File("./keywords.java.txt");
-        try (Scanner scanner = new Scanner(file)) {
+        try (Scanner scanner = new Scanner (file)) {
             while (scanner.hasNextLine()) {
                 String line = scanner.nextLine();
                 Scanner lineScanner = new Scanner(line);
@@ -65,9 +68,7 @@ public class JCheckboxWithoutFileUpdate extends JFrame implements Runnable {
                     secondColumn.add(secondValue);
                 }
 				lineScanner.close();
-
             }
-
         } catch (FileNotFoundException e) {
 			e.printStackTrace();
             System.exit(1);
@@ -75,7 +76,7 @@ public class JCheckboxWithoutFileUpdate extends JFrame implements Runnable {
     }
 	
 	public static void main(String[] args) {
-        SwingUtilities.invokeLater(new JCheckboxWithoutFileUpdate("test checkbox"));
+        SwingUtilities.invokeLater(new JCheckboxWithoutFileUpdate("JCheckbox Example"));
     }
 
 }
