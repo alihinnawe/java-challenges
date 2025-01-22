@@ -23,7 +23,7 @@ public class DialogTest extends JFrame implements Runnable {
 		}
 		else {
 			System.out.print ("See you later!");
-			// dispose ();
+			dispose ();
 		}
 	}
 
