@@ -4,16 +4,15 @@ public class DialogTest extends JFrame {
     Integer a, b;
 
     public DialogTest() {
-       
-        this.setTitle("Dialog Test");
-        this.setSize(300, 200);
+        // this.setTitle("Dialog Test");
+        // this.setSize(300, 200);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         // this.setVisible (false);
-        showOptionDialog();
-        retrunToMainDialog();
+        showOptionDialog ();
+        returnToMainDialog();
     }
     
-     private void retrunToMainDialog() {
+     private void returnToMainDialog() {
         Object[] options = { "Yes", "No" };
         int selected = JOptionPane.showOptionDialog(
             null,
@@ -24,7 +23,6 @@ public class DialogTest extends JFrame {
             null,
             options,
             options[0]
-           
         );
         
         if (selected == 0)
@@ -38,7 +36,8 @@ public class DialogTest extends JFrame {
 
     private void showOptionDialog() {
         // Object[] options = { "Multiplication", "Addition", "Division", "Subtraction" };
-        Object[] options = { "Multiplication", "Addition"};
+        // Object[] options = {"Multiplication", "Addition"};
+        String[] options = {"Multiplication", "Addition"};
         int selected = JOptionPane.showOptionDialog(
             null,
             "Choose an operation",
@@ -75,7 +74,8 @@ public class DialogTest extends JFrame {
 					if (operation.equals("Multiplication")) {
 							result = a * b;
 					} 
-					else if (operation.equals("Addition")) {
+					else //if (operation.equals("Addition")) 
+					{
 							result = a + b;
 					}
 					JOptionPane.showMessageDialog(
@@ -84,20 +84,12 @@ public class DialogTest extends JFrame {
 						"Result",
 						JOptionPane.INFORMATION_MESSAGE
 					);
-					else {
-						JOptionPane.showMessageDialog (
-							null,
-							"NIE ZU SEHEN: Input canceled. No values provided.",
-							"NIE ZU SEHEN: Warning",
-							JOptionPane.WARNING_MESSAGE
-						);
-					}
      			}
 			}
         }
     }
 
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> new DialogTest());
+        SwingUtilities.invokeLater (new DialogTest());
     }
 }
