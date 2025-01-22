@@ -135,6 +135,36 @@ public class DialogTest extends JFrame implements Runnable {
 			String aS = (jca[0] instanceof ValuePanel vp) ? vp.getText () : "";
 			String bS = (jca[1] instanceof ValuePanel vp) ? vp.getText () : "";
 			System.out.println ("aS: " + aS + " bS: " + bS);
+			// adaptierter Alicode
+			if (aS.length () > 0)
+			{	
+				try
+				{
+					a = Integer.parseInt (aS);
+					b = Integer.parseInt (bS);
+				}
+				catch (NumberFormatException nfe)
+				{
+					System.err.println (nfe.getMessage ());
+					returnToMainDialog ();
+					System.out.println ("Ende der NumberFormatException-Behandlung.");
+					return; 
+				}
+				int result; 
+				if (operation.equals("Multiplication")) {
+						result = a * b;
+				} 
+				else //if (operation.equals("Addition")) 
+				{
+						result = a + b;
+				}
+				JOptionPane.showMessageDialog(
+					null,
+					operation + " result: " + result,
+					"Result",
+					JOptionPane.INFORMATION_MESSAGE
+				);
+			}
 		}
         returnToMainDialog ();
     }
