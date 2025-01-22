@@ -23,7 +23,7 @@ public class DialogTest extends JFrame implements Runnable {
 		}
 		else {
 			System.out.print ("See you later!");
-			dispose ();
+			// dispose ();
 		}
 	}
 
@@ -68,8 +68,10 @@ public class DialogTest extends JFrame implements Runnable {
 					}
 					catch (NumberFormatException nfe)
 					{
-						nfe.printStackTrace ();
-						// TODO: ans Schleifenende springen
+						System.err.println (nfe.getMessage ());
+						returnToMainDialog ();
+						System.out.println ("Ende der NumberFormatException-Behandlung.");
+						return; 
 					}
 					int result; 
 					if (operation.equals("Multiplication")) {
