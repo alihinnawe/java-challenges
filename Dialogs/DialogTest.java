@@ -1,18 +1,10 @@
 import javax.swing.*;
 
-public class DialogTest extends JFrame {
-    Integer a, b;
-
-    public DialogTest() {
-        // this.setTitle("Dialog Test");
-        // this.setSize(300, 200);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        // this.setVisible (false);
-        showOptionDialog ();
-        returnToMainDialog();
-    }
+public class DialogTest extends JFrame implements Runnable {
+	
+	Integer a, b;
     
-     private void returnToMainDialog() {
+    private void returnToMainDialog() {
         Object[] options = { "Yes", "No" };
         int selected = JOptionPane.showOptionDialog(
             null,
@@ -27,10 +19,11 @@ public class DialogTest extends JFrame {
         
         if (selected == 0)
         {
-          showOptionDialog();
+			showOptionDialog();
 		}
 		else {
-			System.out.print("See you later!");
+			System.out.print ("See you later!");
+			dispose ();
 		}
 	}
 
@@ -87,7 +80,18 @@ public class DialogTest extends JFrame {
      			}
 			}
         }
+        returnToMainDialog ();
     }
+
+	public void run ()
+	{
+		// this.setTitle("Dialog Test");
+        // this.setSize(300, 200);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        // this.setVisible (false);
+        showOptionDialog ();
+        
+	}
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater (new DialogTest());
