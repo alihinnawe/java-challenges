@@ -8,12 +8,37 @@ public class DialogTest extends JFrame {
         this.setTitle("Dialog Test");
         this.setSize(300, 200);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setVisible(true);
+        // this.setVisible (false);
         showOptionDialog();
+        retrunToMainDialog();
     }
+    
+     private void retrunToMainDialog() {
+        Object[] options = { "Yes", "No" };
+        int selected = JOptionPane.showOptionDialog(
+            null,
+            "Return Again?",
+            "Operation Selection",
+            JOptionPane.DEFAULT_OPTION,
+            JOptionPane.QUESTION_MESSAGE,
+            null,
+            options,
+            options[0]
+           
+        );
+        
+        if (selected == 0)
+        {
+          showOptionDialog();
+		}
+		else {
+			System.out.print("See you later!");
+		}
+	}
 
     private void showOptionDialog() {
-        Object[] options = { "Multiplication", "Addition" };
+        // Object[] options = { "Multiplication", "Addition", "Division", "Subtraction" };
+        Object[] options = { "Multiplication", "Addition"};
         int selected = JOptionPane.showOptionDialog(
             null,
             "Choose an operation",
@@ -24,55 +49,50 @@ public class DialogTest extends JFrame {
             options,
             options[0]
         );
-
+        String operation = options[selected];
         if (selected == -1) {
             System.out.println("No option selected. Exiting.");
         } else {
-            System.out.println("Selected option: " + options[selected]);
-
-                String inputA = JOptionPane.showInputDialog(
-                    null,
-                    "Enter value for 'a':",
-                    "Input for Multiplication",
-                    JOptionPane.QUESTION_MESSAGE
-                );
-
-                String inputB = JOptionPane.showInputDialog(
-                    null,
-                    "Enter value for 'b':",
-                    "Input for Multiplication",
-                    JOptionPane.QUESTION_MESSAGE
-                );
-            a = Integer.parseInt(inputA);
-			b = Integer.parseInt(inputB);
-			if (inputA != null && inputB != null) {
-				if (options[selected].equals("Multiplication")) {
-						int result = a * b;
-						JOptionPane.showMessageDialog(
+			System.out.println("Selected option: " + operation);
+			String inputA = JOptionPane.showInputDialog (
+					null,
+					"Enter value for 'a':",
+					"Input for " + operation,
+					JOptionPane.QUESTION_MESSAGE
+			);
+			if (! inputA.isEmpty ())
+			{	
+				String inputB = JOptionPane.showInputDialog (
+					null,
+					"Enter value for 'b':",
+					"Input for " + operation,
+					JOptionPane.QUESTION_MESSAGE
+				);
+				if (inputA != null && inputB != null) {
+					a = Integer.parseInt(inputA);
+					b = Integer.parseInt(inputB);
+					int result; 
+					if (operation.equals("Multiplication")) {
+							result = a * b;
+					} 
+					else if (operation.equals("Addition")) {
+							result = a + b;
+					}
+					JOptionPane.showMessageDialog(
+						null,
+						operation + " result: " + result,
+						"Result",
+						JOptionPane.INFORMATION_MESSAGE
+					);
+					else {
+						JOptionPane.showMessageDialog (
 							null,
-							"Multiplication result: " + result,
-							"Result",
-							JOptionPane.INFORMATION_MESSAGE
+							"NIE ZU SEHEN: Input canceled. No values provided.",
+							"NIE ZU SEHEN: Warning",
+							JOptionPane.WARNING_MESSAGE
 						);
-                } 
-				 else if (options[selected].equals("Addition")) {
-
-						int result = a + b;
-						JOptionPane.showMessageDialog(
-							null,
-							"Addition result: " + result,
-							"Result",
-							JOptionPane.INFORMATION_MESSAGE
-						);
-				}
-				else {
-                    JOptionPane.showMessageDialog(
-                        null,
-                        "Input canceled. No values provided.",
-                        "Warning",
-                        JOptionPane.WARNING_MESSAGE
-                    );
-                }
+					}
+     			}
 			}
         }
     }
