@@ -117,13 +117,15 @@ public class DialogTest extends JFrame implements Runnable {
         eoAli */
         {
 			// JComponent [] jca = {new ValuePanel ("a: ", null), new ValuePanel ("b: ", "1"), new JButton ("ok"), new JButton ("esc")};
-			JComponent [] jca = {new ValuePanel ("a: ", null), new ValuePanel ("b: ", "1")};
+			// JComponent [] jca = {new ValuePanel ("a: ", null), new ValuePanel ("b: ", "1")};
+			Object [] jca = {new ValuePanel ("a: ", null), new ValuePanel ("b: ", "1"), "Yes", "Nono"};
 			String [] element = {"Faktoren", "Summanden"};
 			int auswahl = JOptionPane.showOptionDialog (
 				null,
 				element[selected],
 				"Werte eingeben",
-				JOptionPane.OK_CANCEL_OPTION,
+				JOptionPane.DEFAULT_OPTION,
+				// JOptionPane.YES_NO_OPTION,
 				JOptionPane.QUESTION_MESSAGE,
 				null,
 				jca,
