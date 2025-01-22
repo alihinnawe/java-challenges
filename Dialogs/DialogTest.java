@@ -61,8 +61,16 @@ public class DialogTest extends JFrame implements Runnable {
 					JOptionPane.QUESTION_MESSAGE
 				);
 				if (inputA != null && inputB != null) {
-					a = Integer.parseInt(inputA);
-					b = Integer.parseInt(inputB);
+					try
+					{
+						a = Integer.parseInt(inputA);
+						b = Integer.parseInt(inputB);
+					}
+					catch (NumberFormatException nfe)
+					{
+						nfe.printStackTrace ();
+						// TODO: ans Schleifenende springen
+					}
 					int result; 
 					if (operation.equals("Multiplication")) {
 							result = a * b;
