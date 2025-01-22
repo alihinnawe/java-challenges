@@ -1,6 +1,6 @@
 import javax.swing.*;
 
-public class DialogTestInstructor extends JFrame implements Runnable {
+public class DialogTest extends JFrame implements Runnable {
 	
 	Integer a, b;
     
@@ -116,7 +116,8 @@ public class DialogTestInstructor extends JFrame implements Runnable {
         }
         eoAli */
         {
-			JComponent [] jca = {new ValuePanel ("a: ", null), new ValuePanel ("b: ", "1"), new JButton ("ok"), new JButton ("esc")};
+			// JComponent [] jca = {new ValuePanel ("a: ", null), new ValuePanel ("b: ", "1"), new JButton ("ok"), new JButton ("esc")};
+			JComponent [] jca = {new ValuePanel ("a: ", null), new ValuePanel ("b: ", "1")};
 			String [] element = {"Faktoren", "Summanden"};
 			int auswahl = JOptionPane.showOptionDialog (
 				null,
@@ -131,7 +132,7 @@ public class DialogTestInstructor extends JFrame implements Runnable {
 			System.out.println ("Auswahl: " + auswahl + "dbg: 0: " + jca[0]  + "dbg: 1: " + jca[1]);
 			String aS = (jca[0] instanceof ValuePanel vp) ? vp.getText () : "";
 			String bS = (jca[1] instanceof ValuePanel vp) ? vp.getText () : "";
-			System.out.println ("aS: " + aS + "bS: " + bS);
+			System.out.println ("aS: " + aS + " bS: " + bS);
 		}
         returnToMainDialog ();
     }
@@ -147,6 +148,6 @@ public class DialogTestInstructor extends JFrame implements Runnable {
 	}
 
     public static void main(String[] args) {
-        SwingUtilities.invokeLater (new DialogTestInstructor());
+        SwingUtilities.invokeLater (new DialogTest());
     }
 }
