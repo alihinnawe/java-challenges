@@ -171,10 +171,8 @@ public class DialogTest extends JFrame implements Runnable {
 
 	public void run ()
 	{
-		// this.setTitle("Dialog Test");
-        // this.setSize(300, 200);
+
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        // this.setVisible (false);
         showOptionDialog ();
         
 	}
