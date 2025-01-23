@@ -1,0 +1,23 @@
+Beim Erzeugen einer neuen Javadatei hat man oft Boilerplate-Code zu schreiben, der sich so oder so ähnlich in vielen Programmen wiederholt.
+
+So taucht der Klassenname K im Dateinamen als K.java auf, in der Klassendeklaration als public class K, wahrscheinlich in der main-Methode als:
+
+K k = new K();
+
+Eventuell will man die args auswerten, evtl. mit Integer.parseInt(args[i]) parsen.
+
+Dann hat man oft eine usage()-Methode, die dem User Anweisungen gibt, mit welcher Syntax das Programm zu starten ist.
+
+Im Kopf steht vielleicht ein Copyright-Hinweis und das Datum, wann die Datei ursprünglich erzeugt wurde.
+
+Vieles davon lässt sich automatisieren, so dass der User eine solche Datei mit
+
+javaTemplate K
+
+erzeugen und automatisch im Lieblingseditor gleich öffnen kann.
+
+JavaTemplate wäre hier ein betriebssystemabhängiges Shellscript, das den Java-Aufruf java JavaTemplate K um noch einen Tick vereinfacht.
+
+Das Template würde man als Muster im Filesystem hinterlegen, aber statt des Klassennamens K würde man beispielsweise SK schreiben, und vom Programm dieses Muster durch den als Parameter übergebenen Namen ersetzen lassen, und Satac durch das aktuelle Datum.
+
+Dies ist der Originaltext aus dem Bild, der den Prozess der Java-Dateierstellung und die Automatisierung von Boilerplate-Code beschreibt.
