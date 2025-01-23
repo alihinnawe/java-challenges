@@ -11,11 +11,6 @@ class X {
 		c = x;
 		System.out.println ("c = " + c);
 	}
-	
-	void bar ()
-	{
-		System.out.println ("X:bar : c " + c);
-	}
 }
 
 public class Y extends X {
@@ -27,18 +22,5 @@ public class Y extends X {
 	public Y ()
 	{
 		super (by); 
-		foo ();
 	}
-	
-	void foo ()
-	{
-		System.out.println ("Y:foo (): ay: " + ay);
-	}
-	
-	public static void main (String[] args) 
-	{
-		Y y = new Y ();
-	}
-	
 }
-
