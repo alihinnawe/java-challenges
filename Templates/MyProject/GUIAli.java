@@ -1,33 +1,43 @@
 import javax.swing.*;
 import java.io.FileNotFoundException;
+import java.io.PrintStream;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Scanner;
 import java.io.File;
+import java.io.PrintStream;
 public class GUIAli extends JFrame implements  Runnable {
     private static  String name = null;
     public void run()
     {
-        File f = new File( "./src/" + name + ".java");
+        Map<String, String> map = new HashMap<>();
+        map.put("\\$MyTemplate", name);
+        map.put("\\$name", name.toLowerCase());
+
+        File f = new File( "./src/$MyTemplate.java");
         try (Scanner sc = new Scanner(f);) {
-
-            System.out.print(sc);
-
-
+            PrintStream ps = new PrintStream("AliClass.java");
+            while (sc.hasNext())
+            {
+                String nextLine = sc.nextLine();
+                System.out.println("nextLine" + nextLine);
+                for ( String key : map.keySet()) {
+                    nextLine = nextLine.replaceAll(key, map.get(key));
+                }
+                ps.println(nextLine);
+            }
+            
         } catch (FileNotFoundException e) {
             System.err.println("Error: File not found: " + e.getMessage());
         }
-
-        Map<String, String> map = new HashMap<>();
-        map.put("\\$NAME", name);
-        map.put("\\$name", name.toLowerCase());
     }
+
 
 
     public static void main(String[] args) {
         name = args[0];
-        System.out.print(name);
+        //System.out.print(name);
         SwingUtilities.invokeLater(new GUIAli());
 
     }
