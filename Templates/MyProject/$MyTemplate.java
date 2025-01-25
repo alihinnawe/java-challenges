@@ -4,7 +4,8 @@ import java.awt.event.*;
 import java.util.Scanner;
 import java.io.*;
 
-public class $MyTemplate extends JFrame implements Runnable {
+ public class $MyTemplate extends JFrame implements Runnable
+{
     JPanel panel1;
     JPanel mainPanel;
     //JComboBox combobox1;
@@ -19,8 +20,23 @@ public class $MyTemplate extends JFrame implements Runnable {
     }
 
     public void run() {
-        button1 = new JButton("button1");
-        button2 = new JButton("button2");
+        button1 = new JButton("Submit");
+        button1.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent ae) {
+                String cmd =  ae.getActionCommand();
+//                Object cmd1 = ae.getSource();
+//                if(cmd1 instanceof JButton) {
+//                    System.out.print("it is a button");
+//                }
+//                System.out.print("action performed is cmd1:  " + cmd1.getClass() );
+//                System.out.print("action performed is cmd" + cmd );
+                if (cmd.equals(button1.getText()))
+                {
+                    textFiled1.setText("Welcome to my first traial");
+                }
+            }
+        });
+        button2 = new JButton("Cancel");
         textFiled1 = new JTextField();
         textFiled2 = new JTextField();
         textFiled1.setColumns(20);
@@ -54,7 +70,7 @@ public class $MyTemplate extends JFrame implements Runnable {
         } else if (args.length > 0) {
             for (int i = 0; i < args.length; i++) {
                 String Newargs = args[i];
-                System.out.println(Newargs);
+                //System.out.println(Newargs);
             }
         }
         SwingUtilities.invokeLater(new $MyTemplate("Welcome to my App"));
