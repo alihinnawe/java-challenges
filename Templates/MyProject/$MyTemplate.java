@@ -21,24 +21,11 @@ import java.io.*;
 
     public void run() {
         button1 = new JButton("Submit");
-        button1.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent ae) {
-                String cmd =  ae.getActionCommand();
-//                Object cmd1 = ae.getSource();
-//                if(cmd1 instanceof JButton) {
-//                    System.out.print("it is a button");
-//                }
-//                System.out.print("action performed is cmd1:  " + cmd1.getClass() );
-//                System.out.print("action performed is cmd" + cmd );
-                if (cmd.equals(button1.getText()))
-                {
-                    textFiled1.setText("Welcome to my first traial");
-                }
-            }
-        });
         button2 = new JButton("Cancel");
         textFiled1 = new JTextField();
         textFiled2 = new JTextField();
+        button1.addActionListener(new NewActionListener(button1,textFiled1));
+
         textFiled1.setColumns(20);
         textFiled2.setColumns(20);
         panel1 = new JPanel();
