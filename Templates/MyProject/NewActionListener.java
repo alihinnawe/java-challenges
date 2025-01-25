@@ -4,19 +4,22 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class NewActionListener implements ActionListener{
-    JButton button1;
+    JButton button;
     JTextField textField1;
     public NewActionListener(JButton buttonNew,JTextField textFieldNew) {
-        button1 = buttonNew;
+        button = buttonNew;
         textField1 = textFieldNew;
     }
     public void actionPerformed(ActionEvent ae) {
         String cmd =  ae.getActionCommand();
 
-        if (cmd.equals(this.button1.getText()))
+        if (cmd.equals("button1"))
         {
-            textField1.setText("Welcome to my first trial");
-            System.out.print("event listener is working!");
+            textField1.setText("Button1 is selected");
+        }
+        else if (cmd.equals("button2")){
+            textField1.setText("Button2 is selected");
+
         }
     }
 
