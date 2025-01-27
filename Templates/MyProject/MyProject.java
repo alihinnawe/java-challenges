@@ -29,7 +29,6 @@ import java.io.*;
         List<JButton> buttons = new ArrayList<>();
 		List<JTextField> textFields = new ArrayList<>();
         panel1.setLayout(new BoxLayout(panel1, BoxLayout.X_AXIS));
-
         for (int i = 1 ; i <= newArgsBtnInt;i++)
         {   if (i == 1)
 			{
@@ -43,11 +42,16 @@ import java.io.*;
 			}
 			else 
 			{
-				JButton button = new JButton("new button" + i);
-				buttons.add(button);
+				if (i > 2)
+				{ 
+					for (int j = 3 ; j <= buttons.size(); ++j)
+					{
+						JButton button = new JButton("button" + j);
+						buttons.add(button);
+					}
 				}
+			}
         }
-		
 		for (int i = 1 ; i <= newArgsChkInt;i++)
         {
             JTextField textField = new JTextField("textField" + i);
