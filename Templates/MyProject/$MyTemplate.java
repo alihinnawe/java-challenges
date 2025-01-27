@@ -42,14 +42,10 @@ import java.io.*;
 			}
 			else 
 			{
-				if (i > 2)
-				{ 
-					for (int j = 3 ; j <= buttons.size(); ++j)
-					{
-						JButton button = new JButton("button" + j);
-						buttons.add(button);
-					}
-				}
+                // I fixed the bug it was: for (int j = i; j <= buttons.size(); j++)
+                // i removed the inner for loop
+                JButton button = new JButton("button" + i);
+                buttons.add(button);
 			}
         }
 		for (int i = 1 ; i <= newArgsChkInt;i++)
