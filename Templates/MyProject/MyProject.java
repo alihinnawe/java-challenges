@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Scanner;
 import java.io.*;
 
- public class $MyTemplate extends JFrame implements Runnable
+ public class MyProject extends JFrame implements Runnable
 {
     private static String newArgs;
     private static int newArgsBtnInt, newArgsChkInt;
@@ -19,7 +19,7 @@ import java.io.*;
 	//JButton button1;
 	//JButton button2;
 
-    $MyTemplate(String s) {
+    MyProject(String s) {
         super(s);
     }
 
@@ -113,6 +113,6 @@ import java.io.*;
 					
             }
         }
-        SwingUtilities.invokeLater(new $MyTemplate("Welcome to my App"));
+        SwingUtilities.invokeLater(new MyProject("Welcome to my App"));
     }
 }

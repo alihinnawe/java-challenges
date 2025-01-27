@@ -1,6 +1,5 @@
 import javax.swing.*;
 import java.io.FileNotFoundException;
-import java.io.PrintStream;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
@@ -13,11 +12,10 @@ public class GUIAli extends JFrame implements  Runnable {
     {
         Map<String, String> map = new HashMap<>();
         map.put("\\$MyTemplate", name);
-        map.put("\\$name", name.toLowerCase());
 
-        File f = new File( "./src/$MyTemplate.java");
+        File f = new File( "./$MyTemplate.java");
         try (Scanner sc = new Scanner(f);) {
-            PrintStream ps = new PrintStream("AliClass.java");
+            PrintStream ps = new PrintStream("MyProject.java");
             while (sc.hasNext())
             {
                 String nextLine = sc.nextLine();
@@ -37,7 +35,6 @@ public class GUIAli extends JFrame implements  Runnable {
 
     public static void main(String[] args) {
         name = args[0];
-        //System.out.print(name);
         SwingUtilities.invokeLater(new GUIAli());
 
     }
