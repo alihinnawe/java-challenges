@@ -77,7 +77,7 @@ import java.io.*;
 		for (JButton button : buttons) {
             System.out.print("button is: " + button.getText() );
             panel1.add(button);
-            button.addActionListener(new NewActionListener(button,textFields));
+            button.addActionListener(new NewActionListener(buttons,textFields));
         }
         
         mainPanel = new JPanel();
