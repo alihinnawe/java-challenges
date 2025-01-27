@@ -13,7 +13,7 @@ public class GUIAli extends JFrame implements  Runnable {
         Map<String, String> map = new HashMap<>();
         map.put("\\$MyTemplate", name);
 
-        File f = new File( "./$MyTemplate.java");
+        File f = new File( "./src/$MyTemplate.java");
         try (Scanner sc = new Scanner(f);) {
             PrintStream ps = new PrintStream("MyProject.java");
             while (sc.hasNext())

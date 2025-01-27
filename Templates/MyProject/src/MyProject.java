@@ -1,17 +1,13 @@
 import java.awt.*;
 import javax.swing.*;
-import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
-import java.io.*;
 
- public class MyProject extends JFrame implements Runnable
+public class MyProject extends JFrame implements Runnable
 {
     private static String newArgs;
-    private static int newArgsBtnInt, newArgsChkInt;
-    JPanel panel1 = new JPanel();
-    JPanel mainPanel;
+    private static int newArgsBtnInt, newArgstxtFInt, newArgsChkInt;
+    JPanel panel1, panel2, mainPanel;
     //JComboBox combobox1;
     //JCheckBox checkBox1;
     //JTextField textFiled1;
@@ -28,6 +24,9 @@ import java.io.*;
 //        button2 = new JButton("Cancel");
         List<JButton> buttons = new ArrayList<>();
 		List<JTextField> textFields = new ArrayList<>();
+        List<JCheckBox> checkboxes = new ArrayList<>();
+        panel1 = new JPanel();
+        panel2 = new JPanel();
         panel1.setLayout(new BoxLayout(panel1, BoxLayout.X_AXIS));
         for (int i = 1 ; i <= newArgsBtnInt;i++)
         {   if (i == 1)
@@ -42,21 +41,22 @@ import java.io.*;
 			}
 			else 
 			{
-				if (i > 2)
-				{ 
-					for (int j = 3 ; j <= buttons.size(); ++j)
-					{
-						JButton button = new JButton("button" + j);
-						buttons.add(button);
-					}
-				}
+                // I fixed the bug it was: for (int j = i; j <= buttons.size(); j++)
+                // i removed the inner for loop
+                JButton button = new JButton("button" + i);
+                buttons.add(button);
 			}
         }
-		for (int i = 1 ; i <= newArgsChkInt;i++)
+		for (int i = 1 ; i <= newArgstxtFInt;i++)
         {
             JTextField textField = new JTextField("textField" + i);
 			textField.setColumns(20);
             textFields.add(textField);
+        }
+        for (int i = 1 ; i <= newArgsChkInt;i++)
+        {
+            JCheckBox checkbox = new JCheckBox("checkbox" + i);
+            checkboxes.add(checkbox);
         }
 		
 		//textFiled1 = new JTextField();
@@ -70,10 +70,11 @@ import java.io.*;
         //panel1.add(textFiled1);
         //panel1.add(textFiled2);
         panel1.setSize(100,100);
-        
+        panel2.setSize(300,300);
 
-		
-		for (JTextField textField : textFields) {
+
+
+        for (JTextField textField : textFields) {
             System.out.print("textField is: " + textField.getText() );
             panel1.add(textField);
         }
@@ -83,10 +84,16 @@ import java.io.*;
             panel1.add(button);
             button.addActionListener(new NewActionListener(button,textFields));
         }
-        
+
+        for (JCheckBox checkBox : checkboxes) {
+           checkboxes.get(0).setSelected(true);
+            panel2.add(checkBox);
+        }
         mainPanel = new JPanel();
         mainPanel.setLayout(new BorderLayout());
         mainPanel.add(panel1, BorderLayout.SOUTH);
+        mainPanel.add(panel2, BorderLayout.NORTH);
+
         add (mainPanel);
         setSize(400, 300);
         pack();
@@ -110,10 +117,14 @@ import java.io.*;
 					{
                         newArgsBtnInt = Integer.parseInt(newArgs[1]);
 					}
-					if (newArgs[0].equals("chk"))
+					else if (newArgs[0].equals("txtF"))
 					{
-						newArgsChkInt = Integer.parseInt(newArgs[1]);
+						newArgstxtFInt = Integer.parseInt(newArgs[1]);
 					}
+                    else if  (newArgs[0].equals("chk"))
+                    {
+                        newArgsChkInt = Integer.parseInt(newArgs[1]);
+                    }
 					
             }
         }

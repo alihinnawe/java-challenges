@@ -77,7 +77,7 @@ import java.io.*;
 		for (JButton button : buttons) {
             System.out.print("button is: " + button.getText() );
             panel1.add(button);
-            button.addActionListener(new NewActionListener(buttons,textFields));
+            button.addActionListener(new NewActionListener(button,textFields));
         }
         
         mainPanel = new JPanel();
@@ -106,7 +106,7 @@ import java.io.*;
 					{
                         newArgsBtnInt = Integer.parseInt(newArgs[1]);
 					}
-					if (newArgs[0].equals("chk"))
+					if (newArgs[0].equals("txtF"))
 					{
 						newArgsChkInt = Integer.parseInt(newArgs[1]);
 					}
