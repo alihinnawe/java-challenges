@@ -47,7 +47,7 @@ public class Replacer extends JFrame implements Runnable{
 			
 
 			
-		for (int i = 0; i <= textFieldsNumber; i++)
+		for (int i = 0; i < textFieldsNumber; i++)
 		{
 			 if ( i == 1)
 			 { 
@@ -69,7 +69,7 @@ public class Replacer extends JFrame implements Runnable{
 		}
 		
 		
-		for (int i = 0; i <= argstextAreaNumber; i++)
+		for (int i = 0; i < argstextAreaNumber; i++)
 		{
 
 			JTextArea textArea = new JTextArea();
@@ -96,9 +96,12 @@ public class Replacer extends JFrame implements Runnable{
 			{ 
 			JPanel panel = new JPanel();
 			panel.setSize(100,100);
+			
+			for (JTextField textField : textFields)
+			{
+				panel.add(textField);
+			}
 			mainPanel.add(panel, BorderLayout.SOUTH);
-
-
 			}
 
 			else 
