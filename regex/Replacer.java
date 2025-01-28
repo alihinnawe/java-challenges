@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class Replacer extends JFrame implements Runnable{
 	static int argsbtnsNumber, textFieldsNumber, argstextAreaNumber, pnNumber;
 	
-	JPanel mainPanel, panel;
+	JPanel mainPanel;
 	List <JButton> buttons =  new ArrayList<>();
 	List <JTextField> textFields =  new ArrayList<>(); 
 	List <JTextArea> teaxtArea = new ArrayList <>();
@@ -43,12 +43,7 @@ public class Replacer extends JFrame implements Runnable{
 			 }
 		}
 			
-		
-		for (JButton button : buttons)
-		{
-			panel.add(button);
-			}
-			
+
 			
 		for (int i = 0; i <= textFieldsNumber; i++)
 		{
@@ -105,8 +100,11 @@ public class Replacer extends JFrame implements Runnable{
 			{ 
 			JPanel panel = new JPanel();
 			panel.setSize(100,100);
+			for (JButton button : buttons)
+			{
+				panel.add(button);
+			}
 			mainPanel.add(panel, BorderLayout.NORTH);
-			panels.add(panel);
 			}
 
 			else if (i == 2)
@@ -122,12 +120,14 @@ public class Replacer extends JFrame implements Runnable{
 			{
 			JPanel panel = new JPanel();
 			panel.setSize(100,100);
-			panel.setLayout(new BoxLayout(panel,BoxLayout.X_AXIS));
+			//panel.setLayout(new BoxLayout(panel,BoxLayout.Y_AXIS));
 			mainPanel.add(panel, BorderLayout.CENTER);
 			}
 		}
 		
-		
+				
+
+			
 		 pack();
 		 setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		 setVisible(true);
@@ -144,24 +144,27 @@ public class Replacer extends JFrame implements Runnable{
 			
 		else
 		{
-			for (int i = 1 ; i <= args.length; ++i )
+			for (int i = 0 ; i <= args.length - 1; i++ )
 			{	
-				String [] newArgs = args[i].split("");
 				
+				String [] newArgs = args[i].split("-");
+				System.out.print(newArgs);
 				switch (newArgs[0]) {
 					case "btn": 
 					{
 						argsbtnsNumber = Integer.parseInt(newArgs[1]);
 						break;
 					}
-					case "textA": 
-					{
-						argstextAreaNumber = Integer.parseInt(newArgs[1]);
-						break;
-					}
+
 					case "txtF": 
 					{
 						textFieldsNumber = Integer.parseInt(newArgs[1]);
+						break;
+					}
+					
+					case "textA": 
+					{
+						argstextAreaNumber = Integer.parseInt(newArgs[1]);
 						break;
 					}
 					
