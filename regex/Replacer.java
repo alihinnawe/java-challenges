@@ -13,22 +13,24 @@ public class Replacer extends JFrame implements Runnable{
 	JPanel mainPanel;
 	List <JButton> buttons =  new ArrayList<>();
 	List <JTextField> textFields =  new ArrayList<>(); 
-	List <JTextArea> teaxtArea = new ArrayList <>();
+	List <JTextArea> textAreas = new ArrayList <>();
 	List <JPanel> panels = new ArrayList <>();
 
 	 public void run ()
 	 
 	{
+		mainPanel = new JPanel();
+		mainPanel.setLayout(new BorderLayout());
 		 
-		 for (int i = 0; i <= argsbtnsNumber; i++)
+		 for (int i = 0; i < argsbtnsNumber; i++)
 		 {
-			 if ( i == 1)
+			 if ( i == 0)
 			 { 
 			 JButton button = new JButton("Open");
 			 buttons.add(button);
 			 }
 			 
-			 else if (i == 2)
+			 else if (i == 1)
 			 { 
 			 JButton button = new JButton("save");
 			 buttons.add(button);
@@ -69,45 +71,28 @@ public class Replacer extends JFrame implements Runnable{
 		
 		for (int i = 0; i <= argstextAreaNumber; i++)
 		{
-			if ( i == 1)
-			{ 
-				JButton button = new JButton("Open");
-				buttons.add(button);
-			}
 
-			else if (i == 2)
-			{ 
-			JButton button = new JButton("save");
-			buttons.add(button);
+			JTextArea textArea = new JTextArea();
+			textAreas.add(textArea);
 
-			}
-
-			else 
-			{
-			JButton button = new JButton("button" + i);
-			buttons.add(button);
-
-			}
 		}
 		
-		 mainPanel =  new JPanel();
-		 mainPanel.setLayout(new BorderLayout());
-		 
-		 
-		for (int i = 0; i <= pnNumber; i++)
+	 
+		for (int i = 0; i < pnNumber; i++)
 		{
-			if ( i == 1)
+			if ( i == 0)
 			{ 
-			JPanel panel = new JPanel();
-			panel.setSize(100,100);
-			for (JButton button : buttons)
-			{
-				panel.add(button);
-			}
-			mainPanel.add(panel, BorderLayout.NORTH);
+				JPanel panel = new JPanel();
+				panel.setSize(100,100);
+				
+				for (JButton button : buttons)
+				{
+					panel.add(button);
+				}
+				mainPanel.add(panel, BorderLayout.NORTH);
 			}
 
-			else if (i == 2)
+			else if (i == 1)
 			{ 
 			JPanel panel = new JPanel();
 			panel.setSize(100,100);
@@ -128,6 +113,7 @@ public class Replacer extends JFrame implements Runnable{
 				
 
 			
+		add(mainPanel);
 		 pack();
 		 setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		 setVisible(true);
@@ -148,7 +134,7 @@ public class Replacer extends JFrame implements Runnable{
 			{	
 				
 				String [] newArgs = args[i].split("-");
-				System.out.print(newArgs);
+				//System.out.print(newArgs);
 				switch (newArgs[0]) {
 					case "btn": 
 					{
