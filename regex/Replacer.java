@@ -111,7 +111,8 @@ public class Replacer extends JFrame implements Runnable{
 				System.out.print(textAreas.size());
 				for (JTextArea textArea : textAreas)
 				{
-					panel.add(textArea);
+					textArea.setSize(150,150);
+					panel.add(new JScrollPane(textArea), BorderLayout.CENTER);
 				}
 				mainPanel.add(panel, BorderLayout.CENTER);
 			}
