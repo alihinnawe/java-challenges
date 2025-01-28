@@ -49,13 +49,13 @@ public class Replacer extends JFrame implements Runnable{
 			
 		for (int i = 0; i < textFieldsNumber; i++)
 		{
-			 if ( i == 1)
+			 if ( i == 0)
 			 { 
 				 JTextField textField = new JTextField("search");
 				 textFields.add(textField);
 			 }
 			 
-			 else if (i == 2)
+			 else if (i == 1)
 			 { 
 				 JTextField textField = new JTextField("result");
 				 textFields.add(textField);
@@ -104,12 +104,16 @@ public class Replacer extends JFrame implements Runnable{
 			mainPanel.add(panel, BorderLayout.SOUTH);
 			}
 
-			else 
+			else if (i == 2) 
 			{
-			JPanel panel = new JPanel();
-			panel.setSize(100,100);
-			//panel.setLayout(new BoxLayout(panel,BoxLayout.Y_AXIS));
-			mainPanel.add(panel, BorderLayout.CENTER);
+				JPanel panel = new JPanel();
+				panel.setSize(300,200);
+				System.out.print(textAreas.size());
+				for (JTextArea textArea : textAreas)
+				{
+					panel.add(textArea);
+				}
+				mainPanel.add(panel, BorderLayout.CENTER);
 			}
 		}
 		
