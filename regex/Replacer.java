@@ -37,6 +37,13 @@ public class Replacer extends JFrame implements Runnable{
 
 			 }
 			 
+			 else if (i == 2)
+			 { 
+			 JButton button = new JButton("exit");
+			 buttons.add(button);
+
+			 }
+			 
 			 else 
 			 {
 				JButton button = new JButton("button" + i);
@@ -108,23 +115,32 @@ public class Replacer extends JFrame implements Runnable{
 			{
 				JPanel panel = new JPanel();
 				panel.setSize(300,200);
+				panel.setLayout(new BoxLayout(panel, BoxLayout.X_AXIS));
+				JPanel centerPanel = new JPanel();
 				System.out.print(textAreas.size());
-				for (JTextArea textArea : textAreas)
-				{
-					textArea.setSize(150,150);
-					panel.add(new JScrollPane(textArea), BorderLayout.CENTER);
-				}
-				mainPanel.add(panel, BorderLayout.CENTER);
-			}
-		}
-		
+				JPanel leftP = new JPanel();
+				JPanel rightP = new JPanel();
 				
+				JTextArea lefttextA = textAreas.get(0);
+				lefttextA.setPreferredSize(new Dimension(200,150));
+				leftP.add(new JScrollPane(lefttextA));
+				
+				JTextArea righttextA = textAreas.get(1);
+				righttextA.setPreferredSize(new Dimension(200,150));
+				rightP.add(new JScrollPane(righttextA));			
+				panel.add(leftP);
+				panel.add(rightP);	
+				centerPanel.add(panel);
+				mainPanel.add(centerPanel, BorderLayout.CENTER);
 
-			
+				}
+			}
+		
+		
 		add(mainPanel);
-		 pack();
-		 setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		 setVisible(true);
+		pack();
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setVisible(true);
 	 }
 		 
 		 
@@ -156,7 +172,7 @@ public class Replacer extends JFrame implements Runnable{
 						break;
 					}
 					
-					case "textA": 
+					case "txtA": 
 					{
 						argstextAreaNumber = Integer.parseInt(newArgs[1]);
 						break;
