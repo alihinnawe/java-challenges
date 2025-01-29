@@ -22,13 +22,13 @@ public class NewActionListener implements ActionListener{
         String cmd =  ae.getActionCommand();
 
         if (cmd.equals("open"))
-        {
-			JFileChooser chooser = new JFileChooser("C:\\documents\\java-challenges\\regex");
+        {   // C:\\Users\\hinna\\IdeaProjects\\java-challenges
+			JFileChooser chooser = new JFileChooser("C:\\Users\\hinna\\IdeaProjects\\java-challenges\\src");
 			int returnVal = chooser.showOpenDialog(null);
 			if(returnVal == JFileChooser.APPROVE_OPTION) {
 			System.out.println("You chose to open this file: " + chooser.getSelectedFile().getName());
 			}
-			File f = new File( "./test.txt");
+			File f = new File( "C:\\Users\\hinna\\IdeaProjects\\java-challenges\\src\\test.txt");
 			try (Scanner sc = new Scanner(f);){
 				//PrintStream ps = new PrintStream("newtext.txt");
 				textAreas.get(0).setLineWrap(true);
@@ -56,12 +56,10 @@ public class NewActionListener implements ActionListener{
 			//textFields.get(1).setText("exit button is selected");
         }
 		else if (cmd.equals("run")){
-			String selectedFieldTxt1 = textFields.get(0).getText();
-
-			textFields.get(1).setText(selectedFieldTxt1.replaceAll(".oo", "ff"));
-			//TODO. replaceAll;
-			System.out.print("exit save true");
-            textFields.get(1).setText("run button is selected");
+            String txtFValue1 = textFields.get(0).getText();
+            String txtFValue2 = textFields.get(1).getText();
+            String finalResult = txtFValue1.replaceAll(txtFValue2, "$1au$2");
+            textFields.get(1).setText(finalResult);
         }
         else {
             String btnText = button.getText();
