@@ -26,21 +26,28 @@ public class Replacer extends JFrame implements Runnable{
 		 {
 			 if ( i == 0)
 			 { 
-			 JButton button = new JButton("Open");
-			 buttons.add(button);
+				 JButton button = new JButton("Open");
+				 buttons.add(button);
 			 }
 			 
 			 else if (i == 1)
 			 { 
-			 JButton button = new JButton("save");
-			 buttons.add(button);
+				 JButton button = new JButton("save");
+				 buttons.add(button);
 
 			 }
 			 
 			 else if (i == 2)
 			 { 
-			 JButton button = new JButton("exit");
-			 buttons.add(button);
+				 JButton button = new JButton("exit");
+				 buttons.add(button);
+
+			 }
+			 
+			 else if (i == 3)
+			 { 
+				 JButton button = new JButton("run");
+				 buttons.add(button);
 
 			 }
 			 
@@ -59,18 +66,21 @@ public class Replacer extends JFrame implements Runnable{
 			 if ( i == 0)
 			 { 
 				 JTextField textField = new JTextField("search");
+				 textField.setColumns(10);
 				 textFields.add(textField);
 			 }
 			 
 			 else if (i == 1)
 			 { 
 				 JTextField textField = new JTextField("result");
+				 textField.setColumns(10);
 				 textFields.add(textField);
 			 }
 			 
 			 else 
 			 {
 				 JTextField textField = new JTextField("textField" + i);
+				 textField.setColumns(10);
 				 textFields.add(textField);
 			 }
 		}
@@ -107,6 +117,7 @@ public class Replacer extends JFrame implements Runnable{
 			for (JTextField textField : textFields)
 			{
 				panel.add(textField);
+				panel.add(buttons.get(3));
 			}
 			mainPanel.add(panel, BorderLayout.SOUTH);
 			}
@@ -117,7 +128,6 @@ public class Replacer extends JFrame implements Runnable{
 				panel.setSize(300,200);
 				panel.setLayout(new BoxLayout(panel, BoxLayout.X_AXIS));
 				JPanel centerPanel = new JPanel();
-				System.out.print(textAreas.size());
 				JPanel leftP = new JPanel();
 				JPanel rightP = new JPanel();
 				
