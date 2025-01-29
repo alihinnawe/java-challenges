@@ -58,8 +58,37 @@ public class NewActionListener implements ActionListener{
 		else if (cmd.equals("run")){
             String txtFValue1 = textFields.get(0).getText();
             String txtFValue2 = textFields.get(1).getText();
-            String finalResult = txtFValue1.replaceAll(txtFValue2, "$1au$2");
-            textFields.get(1).setText(finalResult);
+            //textFields.get(1).setText(finalResult);
+            File f = new File( "C:\\Users\\hinna\\IdeaProjects\\java-challenges\\src\\test.txt");
+//            try (Scanner sc = new Scanner(f);){
+//                while (sc.hasNext())
+//                {
+//                    String nextLine = sc.nextLine();
+//                    if (txtFValue1.matches(nextLine))
+//                    {
+//                        String finalResult = txtFValue1.replaceAll(txtFValue2, "$1au$2");
+//                    }
+//
+//                //ps.println(nextLine);
+//                }
+//            } catch (FileNotFoundException e) {
+//                System.err.println("Error: File not found: " + e.getMessage());
+//            }
+            try (Scanner sc = new Scanner(f); PrintStream ps = new PrintStream(new File("C:\\Users\\hinna\\IdeaProjects\\java-challenges\\src\\testCorrected.txt"))) {
+                while (sc.hasNextLine()) {
+                    String nextLine = sc.nextLine();
+
+                    // Only modify lines that contain txtFValue1
+                    if (nextLine.contains(txtFValue1)) {
+                        nextLine = nextLine.replaceAll(txtFValue2, "$1au$2");  // Apply regex replacement
+                    }
+
+                    ps.println(nextLine);  // Write updated line to output file
+                }
+                System.out.println("File processing complete. Updated file saved as: " + new File("C:\\Users\\hinna\\IdeaProjects\\java-challenges\\src\\testCorrected.txt").getAbsolutePath());
+            } catch (FileNotFoundException e) {
+                System.err.println("Error: File not found: " + e.getMessage());
+            }
         }
         else {
             String btnText = button.getText();
