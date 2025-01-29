@@ -56,6 +56,10 @@ public class NewActionListener implements ActionListener{
 			//textFields.get(1).setText("exit button is selected");
         }
 		else if (cmd.equals("run")){
+			String selectedFieldTxt1 = textFields.get(0).getText();
+
+			textFields.get(1).setText(selectedFieldTxt1.replaceAll(".oo", "ff"));
+			//TODO. replaceAll;
 			System.out.print("exit save true");
             textFields.get(1).setText("run button is selected");
         }
