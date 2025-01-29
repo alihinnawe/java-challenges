@@ -21,46 +21,7 @@ public class Replacer extends JFrame implements Runnable{
 	{
 		mainPanel = new JPanel();
 		mainPanel.setLayout(new BorderLayout());
-		 
-		 for (int i = 0; i < argsbtnsNumber; i++)
-		 {
-			 if ( i == 0)
-			 { 
-				 JButton button = new JButton("Open");
-				 buttons.add(button);
-			 }
-			 
-			 else if (i == 1)
-			 { 
-				 JButton button = new JButton("save");
-				 buttons.add(button);
-
-			 }
-			 
-			 else if (i == 2)
-			 { 
-				 JButton button = new JButton("exit");
-				 buttons.add(button);
-
-			 }
-			 
-			 else if (i == 3)
-			 { 
-				 JButton button = new JButton("run");
-				 buttons.add(button);
-
-			 }
-			 
-			 else 
-			 {
-				JButton button = new JButton("button" + i);
-				buttons.add(button);
-
-			 }
-		}
-			
-
-			
+		
 		for (int i = 0; i < textFieldsNumber; i++)
 		{
 			 if ( i == 0)
@@ -85,7 +46,49 @@ public class Replacer extends JFrame implements Runnable{
 			 }
 		}
 		
-		
+				 
+		for (int i = 0; i < argsbtnsNumber; i++)
+		{
+			if ( i == 0)
+		 { 
+			 JButton button = new JButton("open");
+			 button.addActionListener(new NewActionListener(button,textFields));
+			 buttons.add(button);
+		 }
+		 
+		 else if (i == 1)
+		 { 
+			 JButton button = new JButton("save");
+			 button.addActionListener(new NewActionListener(button,textFields));
+			 buttons.add(button);
+
+		 }
+		 
+		 else if (i == 2)
+		 { 
+			 JButton button = new JButton("exit");
+			 button.addActionListener(new NewActionListener(button,textFields));
+			 buttons.add(button);
+
+		 }
+		 
+		 else if (i == 3)
+		 { 
+			 JButton button = new JButton("run");
+			 button.addActionListener(new NewActionListener(button,textFields));
+			 buttons.add(button);
+
+		 }
+		 
+		 else 
+		 {
+			JButton button = new JButton("button" + i);
+			buttons.add(button);
+
+		 }
+		}
+			
+			
 		for (int i = 0; i < argstextAreaNumber; i++)
 		{
 
@@ -100,7 +103,6 @@ public class Replacer extends JFrame implements Runnable{
 			if ( i == 0)
 			{ 
 				JPanel panel = new JPanel();
-				panel.setSize(100,100);
 				
 				for (JButton button : buttons)
 				{
@@ -122,46 +124,67 @@ public class Replacer extends JFrame implements Runnable{
 			mainPanel.add(panel, BorderLayout.SOUTH);
 			}
 
-			else if (i == 2) 
-			{
+			else if (i == 2) {
+				
+
+
 				JPanel panel = new JPanel();
-				panel.setSize(300,200);
+				setSize(600,400);
 				panel.setLayout(new BoxLayout(panel, BoxLayout.X_AXIS));
-				JPanel centerPanel = new JPanel();
+
 				JPanel leftP = new JPanel();
 				JPanel rightP = new JPanel();
-				
+
 				JTextArea lefttextA = textAreas.get(0);
-				lefttextA.setPreferredSize(new Dimension(200,150));
-				leftP.add(new JScrollPane(lefttextA));
-				
+				lefttextA.setRows(10);  
+				lefttextA.setColumns(30);
+				lefttextA.setLineWrap(false);
+				lefttextA.setWrapStyleWord(false);
+				JScrollPane leftSchroll = new JScrollPane(lefttextA);
+				leftSchroll.setPreferredSize(new Dimension(250, 200));
+				leftSchroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+				leftSchroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+				leftP.add(leftSchroll);
+
 				JTextArea righttextA = textAreas.get(1);
-				righttextA.setPreferredSize(new Dimension(200,150));
-				rightP.add(new JScrollPane(righttextA));			
+				lefttextA.setRows(10);  
+				lefttextA.setColumns(30);
+				righttextA.setLineWrap(false);
+				righttextA.setWrapStyleWord(false);
+
+				JScrollPane rightSchroll = new JScrollPane(righttextA);
+				rightSchroll.setPreferredSize(new Dimension(250, 200));
+				rightSchroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+				rightSchroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+				rightP.add(rightSchroll);
+
 				panel.add(leftP);
-				panel.add(rightP);	
+				panel.add(rightP);
+
+				JPanel centerPanel = new JPanel();
+				centerPanel.setLayout(new BoxLayout(centerPanel, BoxLayout.X_AXIS));
 				centerPanel.add(panel);
+
 				mainPanel.add(centerPanel, BorderLayout.CENTER);
 
-				}
+				mainPanel.revalidate();
+				mainPanel.repaint();
 			}
-		
-		
+
+					
+		}
 		add(mainPanel);
-		pack();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
 	 }
 		 
-		 
-		 
+		  
 	public static void main (String[] args) {
 		
 		if (args.length == 0)
 		{
 			System.exit(1);
 			}
-			
 		else
 		{
 			for (int i = 0 ; i <= args.length - 1; i++ )
