@@ -1,0 +1,11 @@
+matches? 
+^\d?(.[a-z]{3})$ 		Geek				
+^[A-M][a-z]{3}.*$		Geekific
+[A-Z].(f|k)e			Like
+^\w{1,9}$.*				Subscribe
+^[A-Z]([a-z]).$1.$1.	Regexes
+\w+\s+\S+\s+\w+\W?$		Thanks for Watching!
+^[L-N]?[^\d]{7}.*		Matching
+[^D-F][a-z]{7,10}$		Exercise
+
+\w := z € {[a-zA-Z0-9_]}

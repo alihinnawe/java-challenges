@@ -38,7 +38,7 @@ public class NewActionListener implements ActionListener{
 					String nextLine = sc.nextLine();					
 					System.out.println("nextLine " + nextLine);
 					//TODO import mucltiple lines in textArea!!
-					textAreas.get(0).append(nextLine + "\n\s");
+					textAreas.get(0).append(nextLine + "\n");
 					//ps.println(nextLine);
 				}
 			} catch (FileNotFoundException e) {

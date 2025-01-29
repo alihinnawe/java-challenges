@@ -162,17 +162,13 @@ public class Replacer extends JFrame implements Runnable{
 				panel.add(rightP);
 
 				JPanel centerPanel = new JPanel();
-				centerPanel.setLayout(new BoxLayout(centerPanel, BoxLayout.X_AXIS));
+				centerPanel.setLayout(new BoxLayout(centerPanel, BoxLayout.Y_AXIS));
 				centerPanel.add(panel);
 
 				mainPanel.add(centerPanel, BorderLayout.CENTER);
-
-				mainPanel.revalidate();
-				mainPanel.repaint();
-			}
-
-					
+			}			
 		}
+		
 		add(mainPanel);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
