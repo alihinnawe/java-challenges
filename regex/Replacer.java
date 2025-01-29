@@ -52,14 +52,14 @@ public class Replacer extends JFrame implements Runnable{
 			if ( i == 0)
 		 { 
 			 JButton button = new JButton("open");
-			 button.addActionListener(new NewActionListener(button,textFields));
+			 button.addActionListener(new NewActionListener(button,textFields,textAreas));
 			 buttons.add(button);
 		 }
 		 
 		 else if (i == 1)
 		 { 
 			 JButton button = new JButton("save");
-			 button.addActionListener(new NewActionListener(button,textFields));
+			 button.addActionListener(new NewActionListener(button,textFields,textAreas));
 			 buttons.add(button);
 
 		 }
@@ -67,7 +67,7 @@ public class Replacer extends JFrame implements Runnable{
 		 else if (i == 2)
 		 { 
 			 JButton button = new JButton("exit");
-			 button.addActionListener(new NewActionListener(button,textFields));
+			 button.addActionListener(new NewActionListener(button,textFields,textAreas));
 			 buttons.add(button);
 
 		 }
@@ -75,7 +75,7 @@ public class Replacer extends JFrame implements Runnable{
 		 else if (i == 3)
 		 { 
 			 JButton button = new JButton("run");
-			 button.addActionListener(new NewActionListener(button,textFields));
+			 button.addActionListener(new NewActionListener(button,textFields,textAreas));
 			 buttons.add(button);
 
 		 }
