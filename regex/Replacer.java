@@ -138,6 +138,7 @@ public class Replacer extends JFrame implements Runnable{
 				JTextArea lefttextA = textAreas.get(0);
 				lefttextA.setRows(10);  
 				lefttextA.setColumns(30);
+				lefttextA.setEditable(false);
 				lefttextA.setLineWrap(false);
 				lefttextA.setWrapStyleWord(false);
 				JScrollPane leftSchroll = new JScrollPane(lefttextA);
@@ -147,8 +148,9 @@ public class Replacer extends JFrame implements Runnable{
 				leftP.add(leftSchroll);
 
 				JTextArea righttextA = textAreas.get(1);
-				lefttextA.setRows(10);  
-				lefttextA.setColumns(30);
+				righttextA.setRows(10);  
+				righttextA.setColumns(30);
+				righttextA.setEditable(false);
 				righttextA.setLineWrap(false);
 				righttextA.setWrapStyleWord(false);
 
