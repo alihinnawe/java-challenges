@@ -28,8 +28,7 @@ public class NewActionListener implements ActionListener {
     public void load ()
     {
 		File inF = new File(inputPath);
-		File outF = new File(outputPath);
-		
+
 		try (Scanner sc = new Scanner(inF);){
 
 			while (sc.hasNext())
@@ -43,16 +42,17 @@ public class NewActionListener implements ActionListener {
 	}
 
 		
-	public void save (String outputPath)
+	public void save (String newOutputPath)
 	{
-		File newF = new File(outputPath);
+		File newF = new File(newOutputPath);
 
 		try (PrintStream ps = new PrintStream(newF)) {
-
+			textAreas.get(0).setText("");
 			String[] lines = textAreas.get(1).getText().split("\n");
 			for (String line : lines) {
 				ps.print(line + "\n");
 			}
+			load();
 
 		} catch (FileNotFoundException e) {
 			System.err.println("Error: File not found:");
@@ -98,7 +98,7 @@ public class NewActionListener implements ActionListener {
             load();
         }
         else if (cmd.equals("save")){
-			save(outputPath);
+			save(inputPath);
         }
         else if (cmd.equals("exit")){
             System.out.print("exit save true");
