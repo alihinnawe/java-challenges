@@ -3,7 +3,20 @@ import java.awt.*;
 import java.util.*;
 import java.util.List;
 import java.util.ArrayList;
-
+/**
+ * Replacer manages text replacements and filtering 
+ * It has two main panels using a CardLayout. It creates buttons, text fields, and text areas 
+ * based on commandline parameters.
+ *
+ * It handles user inputs, and switches between different panels, the replacement and filter panel
+ 
+ *
+ * Command-line arguments:
+ * btn-<number> : Specifies the number of buttons.
+ * txtF-<number> : Specifies the number of text fields.
+ * txtA-<number> : Specifies the number of text areas.
+ * pn-<number> : Specifies the number of panels.
+ **/
 public class Replacer extends JFrame implements Runnable {
     static int argsbtnsNumber, textFieldsNumber, argstextAreaNumber, pnNumber;
 
