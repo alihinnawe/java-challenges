@@ -83,6 +83,29 @@ public class NewActionListener implements ActionListener {
 				}
 				load();
 
+				int option = JOptionPane.showConfirmDialog(
+						null,
+						"Do you want to stay replacing or move to the Filter panel?",
+						"Choose Action",
+						JOptionPane.YES_NO_OPTION,
+						JOptionPane.QUESTION_MESSAGE
+				);
+				Boolean moved = false;
+				// If the user clicks 'YES' (stay replacing), do nothing, stay on the "replacment Panel"
+				if (option == JOptionPane.YES_OPTION) {
+				}
+				// If the user clicks 'NO' (move to Filter panel), switch to the "Filter Panel"
+				else if (option == JOptionPane.NO_OPTION) {
+
+					// Switch to the "Filter Panel"
+					textFields2.get(0).setText("(.)(.*)");
+					textAreas2.get(1).setText("");
+					textAreas2.get(0).setText("");
+					load();
+					moved = true;
+					cardLayout.show(cardPanel, "Filter Panel");
+				}
+
 			} catch (FileNotFoundException e) {
 				System.err.println("Error: File not found:");
 			}
@@ -93,8 +116,8 @@ public class NewActionListener implements ActionListener {
 	{   textAreas2.get(1).setText("");
 		File f = new File (inputPath);
 		try (Scanner sc = new Scanner(f)) {
-			//Boolean replaced = false;
-			while (sc.hasNextLine()) {
+			Boolean moved = false;
+			while (sc.hasNextLine() && !moved) {
 				String nextLine = sc.nextLine();
 				//"$1au$2" (.)as(.*)
 				Pattern compiledPattern = Pattern.compile(textFieldValue1);
@@ -104,6 +127,29 @@ public class NewActionListener implements ActionListener {
 				{
 					textAreas2.get(1).append(nextLine + "\n");
 				}
+
+			}				// Show confirmation dialog asking the user whether to stay or move
+			int option = JOptionPane.showConfirmDialog(
+					null,
+					"Do you want to stay filtering or move to the Replacement panel?",
+					"Choose Action",
+					JOptionPane.YES_NO_OPTION,
+					JOptionPane.QUESTION_MESSAGE
+			);
+
+			// If the user clicks 'YES' (stay filtering), do nothing, stay on the "Filter Panel"
+			if (option == JOptionPane.YES_OPTION) {
+
+			}
+			// If the user clicks 'NO' (move to Replacement panel), switch to the "Replacement Panel"
+			else if (option == JOptionPane.NO_OPTION) {
+				moved = true;
+				// Switch to the "Replacement Panel"
+				textFields1.get(0).setText(textFields2.get(0).getText());
+				textAreas1.get(0).setText("");
+				textAreas1.get(1).setText("");
+				load();
+				cardLayout.show(cardPanel, "Replacement Panel");
 			}
 		} catch (FileNotFoundException e) {
 			System.err.println("Error: File not found:");
@@ -172,25 +218,6 @@ public class NewActionListener implements ActionListener {
 		else if (cmd.equals("filter")) {
 			String txtFValue = textFields2.get(0).getText();
 			copyToSecondTFilterArea(txtFValue);
-
-			// Show confirmation dialog asking the user whether to stay or move
-			int option = JOptionPane.showConfirmDialog(
-					null,  // Parent component (use 'this' to refer to the current frame)
-					"Do you want to stay filtering or move to the Replacement panel?",
-					"Choose Action",
-					JOptionPane.YES_NO_OPTION,
-					JOptionPane.QUESTION_MESSAGE
-			);
-
-			// If the user clicks 'YES' (stay filtering), do nothing, stay on the "Filter Panel"
-			if (option == JOptionPane.YES_OPTION) {
-				// Do nothing, stay on the "Filter Panel"
-			}
-			// If the user clicks 'NO' (move to Replacement panel), switch to the "Replacement Panel"
-			else if (option == JOptionPane.NO_OPTION) {
-				// Switch to the "Replacement Panel"
-				cardLayout.show(cardPanel, "Replacement Panel");
-			}
 		}
 
 		else {

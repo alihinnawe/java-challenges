@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
+import java.util.*;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -8,6 +9,7 @@ public class Replacer extends JFrame implements Runnable {
 
     private JPanel mainPanel1, mainPanel2, cardPanel;
     private CardLayout cardLayout;
+    private JButton button;
 
     List<JButton> buttons1 = new ArrayList<>(); // Buttons for mainPanel1
     List<JButton> buttons2 = new ArrayList<>(); // Buttons for mainPanel2
@@ -17,6 +19,9 @@ public class Replacer extends JFrame implements Runnable {
     List<JTextArea> textAreas2 = new ArrayList<>(); // Text areas for mainPanel2
 
     public void run() {
+        //ResourceBundle rb = ResourceBundle.getBundle ("KeywordsDone", new Locale("ar", "AR"));
+        //ResourceBundle rb = ResourceBundle.getBundle ("KeywordsDone");
+
         cardLayout = new CardLayout();
         cardPanel = new JPanel(cardLayout);
 
@@ -56,7 +61,6 @@ public class Replacer extends JFrame implements Runnable {
 
         // Add buttons for mainPanel1
         for (int i = 0; i < argsbtnsNumber; i++) {
-            JButton button;
             switch (i) {
                 case 0:
                     button = new JButton("open");
@@ -81,9 +85,7 @@ public class Replacer extends JFrame implements Runnable {
             buttons1.add(button);
         }
 
-        // Add buttons for mainPanel2
         for (int i = 0; i < argsbtnsNumber; i++) {
-            JButton button;
             switch (i) {
                 case 0:
                     button = new JButton("open");
