@@ -24,17 +24,14 @@ public class Replacer extends JFrame implements Runnable {
     private CardLayout cardLayout;
     private JButton button;
 
-    List<JButton> buttons1 = new ArrayList<>(); // Buttons for mainPanel1
-    List<JButton> buttons2 = new ArrayList<>(); // Buttons for mainPanel2
-    List<JTextField> textFields1 = new ArrayList<>(); // Text fields for mainPanel1
-    List<JTextField> textFields2 = new ArrayList<>(); // Text fields for mainPanel2
-    List<JTextArea> textAreas1 = new ArrayList<>(); // Text areas for mainPanel1
-    List<JTextArea> textAreas2 = new ArrayList<>(); // Text areas for mainPanel2
+    List<JButton> buttons1 = new ArrayList<>();
+    List<JButton> buttons2 = new ArrayList<>();
+    List<JTextField> textFields1 = new ArrayList<>();
+    List<JTextField> textFields2 = new ArrayList<>();
+    List<JTextArea> textAreas1 = new ArrayList<>();
+    List<JTextArea> textAreas2 = new ArrayList<>();
 
     public void run() {
-        //ResourceBundle rb = ResourceBundle.getBundle ("KeywordsDone", new Locale("ar", "AR"));
-        //ResourceBundle rb = ResourceBundle.getBundle ("KeywordsDone");
-
         cardLayout = new CardLayout();
         cardPanel = new JPanel(cardLayout);
 
@@ -44,7 +41,6 @@ public class Replacer extends JFrame implements Runnable {
         mainPanel2 = new JPanel();
         mainPanel2.setLayout(new BorderLayout());
 
-        // Add text fields for mainPanel1
         for (int i = 0; i < textFieldsNumber; i++) {
             JTextField textField = new JTextField();
             textField.setColumns(10);
@@ -58,7 +54,6 @@ public class Replacer extends JFrame implements Runnable {
             textFields1.add(textField);
         }
 
-        // Add text fields for mainPanel2
         for (int i = 0; i < textFieldsNumber; i++) {
             JTextField textField = new JTextField();
             textField.setColumns(10);
@@ -72,7 +67,6 @@ public class Replacer extends JFrame implements Runnable {
             textFields2.add(textField);
         }
 
-        // Add buttons for mainPanel1
         for (int i = 0; i < argsbtnsNumber; i++) {
             switch (i) {
                 case 0:
@@ -123,27 +117,22 @@ public class Replacer extends JFrame implements Runnable {
             buttons2.add(button);
         }
 
-        // Add text areas for mainPanel1
         for (int i = 0; i < argstextAreaNumber; i++) {
             JTextArea textArea = new JTextArea();
             textAreas1.add(textArea);
         }
 
-        // Add text areas for mainPanel2
         for (int i = 0; i < argstextAreaNumber; i++) {
             JTextArea textArea = new JTextArea();
             textAreas2.add(textArea);
         }
 
-        // Add components to mainPanel1 (Replacement Panel)
-        // North: open, save, exit buttons
         JPanel northPanel1 = new JPanel();
-        for (int i = 0; i < 3; i++) { // Add open, save, exit buttons
+        for (int i = 0; i < 3; i++) {
             northPanel1.add(buttons1.get(i));
         }
         mainPanel1.add(northPanel1, BorderLayout.NORTH);
 
-        // Center: left and right JTextArea
         JPanel centerPanel1 = new JPanel();
         centerPanel1.setLayout(new BoxLayout(centerPanel1, BoxLayout.X_AXIS));
 
@@ -169,22 +158,18 @@ public class Replacer extends JFrame implements Runnable {
         centerPanel1.add(rightScroll1);
         mainPanel1.add(centerPanel1, BorderLayout.CENTER);
 
-        // South: run button and two text fields
         JPanel southPanel1 = new JPanel();
-        southPanel1.add(buttons1.get(3)); // run button
-        southPanel1.add(textFields1.get(0)); // first text field
-        southPanel1.add(textFields1.get(1)); // second text field
+        southPanel1.add(buttons1.get(3));
+        southPanel1.add(textFields1.get(0));
+        southPanel1.add(textFields1.get(1));
         mainPanel1.add(southPanel1, BorderLayout.SOUTH);
 
-        // Add components to mainPanel2 (Filter Panel)
-        // North: open, save, exit buttons
         JPanel northPanel2 = new JPanel();
-        for (int i = 0; i < 3; i++) { // Add open, save, exit buttons
+        for (int i = 0; i < 3; i++) {
             northPanel2.add(buttons2.get(i));
         }
         mainPanel2.add(northPanel2, BorderLayout.NORTH);
 
-        // Center: left and right JTextArea
         JPanel centerPanel2 = new JPanel();
         centerPanel2.setLayout(new BoxLayout(centerPanel2, BoxLayout.X_AXIS));
 
@@ -210,22 +195,18 @@ public class Replacer extends JFrame implements Runnable {
         centerPanel2.add(rightScroll2);
         mainPanel2.add(centerPanel2, BorderLayout.CENTER);
 
-        // South: filter button and first text field
         JPanel southPanel2 = new JPanel();
-        southPanel2.add(buttons2.get(4)); // filter button
-        southPanel2.add(textFields2.get(0)); // first text field
+        southPanel2.add(buttons2.get(4));
+        southPanel2.add(textFields2.get(0));
         mainPanel2.add(southPanel2, BorderLayout.SOUTH);
 
-        // Add panels to cardPanel
         cardPanel.add(mainPanel1, "Replacement Panel");
         cardPanel.add(mainPanel2, "Filter Panel");
 
-        // Set the default panel to Replacement Panel
         cardLayout.show(cardPanel, "Filter Panel");
 
-        // Set up the JFrame
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(800, 600); // Set a reasonable size for the frame
+        setSize(800, 600);
         setVisible(true);
         add(cardPanel);
     }
