@@ -99,7 +99,8 @@ public class NewActionListener implements ActionListener {
 				//"$1au$2" (.)as(.*)
 				Pattern compiledPattern = Pattern.compile(textFieldValue1);
 				Matcher matcher = compiledPattern.matcher(nextLine);
-				if (matcher.matches())
+
+				if (matcher.matches() && !textAreas2.get(0).getText().isEmpty())
 				{
 					textAreas2.get(1).append(nextLine + "\n");
 				}
@@ -168,10 +169,30 @@ public class NewActionListener implements ActionListener {
 			textFields1.get(0).setText("(.)(.*)");
 			textFields1.get(1).setText("$1$2");
 		}
-		else if (cmd.equals("filter")){
+		else if (cmd.equals("filter")) {
 			String txtFValue = textFields2.get(0).getText();
 			copyToSecondTFilterArea(txtFValue);
+
+			// Show confirmation dialog asking the user whether to stay or move
+			int option = JOptionPane.showConfirmDialog(
+					null,  // Parent component (use 'this' to refer to the current frame)
+					"Do you want to stay filtering or move to the Replacement panel?",
+					"Choose Action",
+					JOptionPane.YES_NO_OPTION,
+					JOptionPane.QUESTION_MESSAGE
+			);
+
+			// If the user clicks 'YES' (stay filtering), do nothing, stay on the "Filter Panel"
+			if (option == JOptionPane.YES_OPTION) {
+				// Do nothing, stay on the "Filter Panel"
+			}
+			// If the user clicks 'NO' (move to Replacement panel), switch to the "Replacement Panel"
+			else if (option == JOptionPane.NO_OPTION) {
+				// Switch to the "Replacement Panel"
+				cardLayout.show(cardPanel, "Replacement Panel");
+			}
 		}
+
 		else {
 			String btnText = button.getText();
 			if (cmd.equals(btnText)) {
