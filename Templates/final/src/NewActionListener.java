@@ -24,10 +24,10 @@ public class NewActionListener implements ActionListener {
 	//C:\\documents\\java-challenges\\regex\\test.txt
 	//String outputPath = "C:\\Users\\hinnawe.ali\\IdeaProjects\\MyProject\\src\\testNew.txt";
 
-	public NewActionListener(JButton buttonNew,List<JTextField> textFieldNew1,List<JTextField> textFieldNew2, List <JTextArea> textAreaNew1,List <JTextArea> textAreaNew2, CardLayout cardLayoutNew, JPanel cardPanelNew) {
+	public NewActionListener(JButton buttonNew,List<JTextField> textFieldsNew1,List<JTextField> textFieldsNew2, List <JTextArea> textAreaNew1,List <JTextArea> textAreaNew2, CardLayout cardLayoutNew, JPanel cardPanelNew) {
 		button = buttonNew;
-		textFields1 = textFieldNew1;
-		textFields2 = textFieldNew2;
+		textFields1 = textFieldsNew1;
+		textFields2 = textFieldsNew2;
 
 		textAreas1 = textAreaNew1;
 		textAreas2 = textAreaNew2;
@@ -53,6 +53,23 @@ public class NewActionListener implements ActionListener {
 		}
 	}
 
+	public void loadFilter ()
+	{
+		File inF = new File(inputPath);
+
+		try (Scanner sc = new Scanner(inF);){
+
+			while (sc.hasNext())
+			{
+				String nextLine = sc.nextLine();
+				textAreas2.get(0).append(nextLine + "\n");
+
+			}
+		} catch (FileNotFoundException e) {
+			System.err.println("Error: File not found: " + e.getMessage());
+		}
+	}
+
 
 	public void save (String newOutputPath)
 	{
@@ -69,6 +86,26 @@ public class NewActionListener implements ActionListener {
 			} catch (FileNotFoundException e) {
 				System.err.println("Error: File not found:");
 			}
+		}
+	}
+
+	public void copyToSecondTFilterArea (String textFieldValue1)
+	{   textAreas2.get(1).setText("");
+		File f = new File (inputPath);
+		try (Scanner sc = new Scanner(f)) {
+			//Boolean replaced = false;
+			while (sc.hasNextLine()) {
+				String nextLine = sc.nextLine();
+				//"$1au$2" (.)as(.*)
+				Pattern compiledPattern = Pattern.compile(textFieldValue1);
+				Matcher matcher = compiledPattern.matcher(nextLine);
+				if (matcher.matches())
+				{
+					textAreas2.get(1).append(nextLine + "\n");
+				}
+			}
+		} catch (FileNotFoundException e) {
+			System.err.println("Error: File not found:");
 		}
 	}
 
@@ -132,10 +169,8 @@ public class NewActionListener implements ActionListener {
 			textFields1.get(1).setText("$1$2");
 		}
 		else if (cmd.equals("filter")){
-
-
-			cardLayout.show(cardPanel, "Replacement Panel");
-
+			String txtFValue = textFields2.get(0).getText();
+			copyToSecondTFilterArea(txtFValue);
 		}
 		else {
 			String btnText = button.getText();
