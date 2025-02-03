@@ -10,10 +10,8 @@ public class DirectoryMenuApp extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 
-        // Create menu bar
         JMenuBar menuBar = new JMenuBar();
 
-        // Add directory structure to menu bar
         File rootDir = new File(directoryPath);
         if (rootDir.exists() && rootDir.isDirectory()) {
             JMenu rootMenu = new JMenu(rootDir.getName());
@@ -30,13 +28,11 @@ public class DirectoryMenuApp extends JFrame {
         File[] files = directory.listFiles();
         if (files != null) {
             for (File file : files) {
-                if (file.isDirectory()) {
-                    // Create a submenu for subdirectories
+                if (file.isDirectory()) {   
                     JMenu subMenu = new JMenu(file.getName());
                     buildMenu(subMenu, file);
                     menu.add(subMenu);
                 } else {
-                    // Add files as menu items
                     JMenuItem fileItem = new JMenuItem(file.getName());
                     menu.add(fileItem);
                 }
