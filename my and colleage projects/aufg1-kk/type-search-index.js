@@ -1,1 +1,0 @@
-typeSearchIndex = [{"l":"Alle Klassen und Schnittstellen","u":"allclasses-index.html"},{"p":"<Unnamed>","l":"Main"},{"p":"<Unnamed>","l":"TestDonerstag"},{"p":"<Unnamed>","l":"TestDonerstag_ar"}];updateSearchResults();

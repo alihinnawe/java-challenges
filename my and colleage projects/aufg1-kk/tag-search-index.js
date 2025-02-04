@@ -1,1 +1,0 @@
-tagSearchIndex = [{"l":"Hauptklasse für das Programm","h":"Klasse TestDonerstag","d":"Abschnitt","u":"TestDonerstag.html#hauptklasse-f-r-das-programm-heading"},{"l":"Serialisierte Form","h":"","u":"serialized-form.html"}];updateSearchResults();
