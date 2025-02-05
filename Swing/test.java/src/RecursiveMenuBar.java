@@ -44,10 +44,10 @@ public class RecursiveMenuBar extends JFrame implements Runnable {
 				JMenuItem item = new JMenuItem(file.getName());
 
 				item.addActionListener(e -> {
-				if (file.getName().endsWith("PNG"))
-				{
+				if (file.getName().endsWith("PNG") || file.getName().endsWith("png"))
+					{
 					ImageIcon image = new ImageIcon(file.getAbsolutePath());
-					Image scaledImage = image.getImage().getScaledInstance(20, 20, Image.SCALE_SMOOTH);
+					Image scaledImage = image.getImage().getScaledInstance(64, 64, Image.SCALE_SMOOTH);
 
 					item.setIcon(new ImageIcon(scaledImage));
 				}
