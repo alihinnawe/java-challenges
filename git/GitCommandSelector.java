@@ -4,8 +4,8 @@ import java.awt.event.ActionEvent;
 
 public class GitCommandSelector {
 
-    // Define Git commands and their options with descriptions
-    private static final String[][] GIT_COMMANDS = {
+    // Define base Git commands and their options with descriptions
+    private static final String[][] GIT_BASE_COMMANDS = {
         {"git add", 
             "git add . - Stages all changes in the current directory and subdirectories.",
             "git add <file> - Stages a specific file.",
@@ -55,14 +55,83 @@ public class GitCommandSelector {
             "git log --graph - Displays the commit history with a graphical representation of branches."}
     };
 
+    // Define other Git commands and their options with descriptions
+    private static final String[][] GIT_OTHER_COMMANDS = {
+        {"git stash", 
+            "git stash save \"message\" - Save the current changes with a message.",
+            "git stash pop - Apply the most recent stashed changes and remove them from the stash.",
+            "git stash list - List all stashed changes.",
+            "git stash apply - Apply the most recent stashed changes without removing them from the stash.",
+            "git stash drop - Remove the most recent stash."},
+
+        {"git reset", 
+            "git reset --soft HEAD~1 - Undo the last commit but keep the changes in the working directory.",
+            "git reset --hard HEAD~1 - Undo the last commit and discard the changes.",
+            "git reset <file> - Unstage a file from the staging area."},
+
+        {"git merge", 
+            "git merge <branch-name> - Merge the specified branch into the current branch.",
+            "git merge --no-ff <branch-name> - Perform a merge even if it could be fast-forwarded."},
+
+        {"git rebase", 
+            "git rebase <branch-name> - Rebase the current branch onto the specified branch.",
+            "git rebase --continue - Continue after resolving conflicts.",
+            "git rebase --abort - Abort the rebase operation."},
+
+        {"git cherry-pick", 
+            "git cherry-pick <commit-hash> - Apply the changes from the specified commit."},
+
+        {"git tag", 
+            "git tag <tag-name> - Create a lightweight tag.",
+            "git tag -a <tag-name> -m \"message\" - Create an annotated tag with a message.",
+            "git push origin <tag-name> - Push a tag to the remote repository."},
+
+        {"git remote", 
+            "git remote add <name> <url> - Add a new remote repository.",
+            "git remote -v - List all configured remotes with their URLs.",
+            "git remote remove <name> - Remove a remote repository."},
+
+        {"git diff", 
+            "git diff - Show unstaged changes.",
+            "git diff --staged - Show staged changes.",
+            "git diff <commit1> <commit2> - Compare two commits."},
+
+        {"git blame", 
+            "git blame <file> - Show who last modified each line in the file."},
+
+        {"git bisect", 
+            "git bisect start - Start the bisect process.",
+            "git bisect good <commit> - Mark a commit as good.",
+            "git bisect bad <commit> - Mark a commit as bad.",
+            "git bisect reset - Reset the repository to the original state."}
+    };
+
     public static void main(String[] args) {
         // Create the frame
         JFrame frame = new JFrame("Git Command Selector");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(600, 400);
+        frame.setSize(800, 600);
 
-        // Create a main panel with a BorderLayout
-        JPanel mainPanel = new JPanel(new BorderLayout());
+        // Create a JTabbedPane for organizing commands into tabs
+        JTabbedPane tabbedPane = new JTabbedPane();
+
+        // Create panels for each tab
+        JPanel basePanel = createCommandPanel(GIT_BASE_COMMANDS, "Git Base Commands");
+        JPanel otherPanel = createCommandPanel(GIT_OTHER_COMMANDS, "Other Git Commands");
+
+        // Add panels to the tabbed pane
+        tabbedPane.addTab("Git Base", basePanel);
+        tabbedPane.addTab("Others", otherPanel);
+
+        // Add the tabbed pane to the frame
+        frame.add(tabbedPane);
+        frame.setVisible(true);
+    }
+
+    // Helper method to create a panel for displaying commands
+    private static JPanel createCommandPanel(String[][] commands, String title) {
+        // Create a panel with a BorderLayout
+        JPanel panel = new JPanel(new BorderLayout());
 
         // Create a label for instructions
         JLabel label = new JLabel("Select a Git command to see its options:");
@@ -70,7 +139,7 @@ public class GitCommandSelector {
 
         // Create a ComboBox for selecting Git commands
         JComboBox<String> commandSelector = new JComboBox<>();
-        for (String[] command : GIT_COMMANDS) {
+        for (String[] command : commands) {
             commandSelector.addItem(command[0]);
         }
 
@@ -85,8 +154,8 @@ public class GitCommandSelector {
         commandSelector.addActionListener((ActionEvent e) -> {
             String selectedCommand = (String) commandSelector.getSelectedItem();
             if (selectedCommand != null) {
-                // Find the selected command in the GIT_COMMANDS array
-                for (String[] command : GIT_COMMANDS) {
+                // Find the selected command in the commands array
+                for (String[] command : commands) {
                     if (command[0].equals(selectedCommand)) {
                         // Display all subcommands/options for the selected command with descriptions
                         StringBuilder options = new StringBuilder();
@@ -108,11 +177,9 @@ public class GitCommandSelector {
         topPanel.add(commandSelector, BorderLayout.CENTER);
 
         // Add components to the main panel
-        mainPanel.add(topPanel, BorderLayout.NORTH);
-        mainPanel.add(scrollPane, BorderLayout.CENTER);
+        panel.add(topPanel, BorderLayout.NORTH);
+        panel.add(scrollPane, BorderLayout.CENTER);
 
-        // Add the main panel to the frame and make it visible
-        frame.add(mainPanel);
-        frame.setVisible(true);
+        return panel;
     }
 }
