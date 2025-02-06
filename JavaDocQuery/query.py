@@ -9,6 +9,17 @@ import torch
 # Configure logging
 logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
 
+# Function to load file paths from file_paths.txt
+def load_file_paths():
+    file_paths = []
+    try:
+        with open("file_paths.txt", "r") as f:
+            file_paths = f.readlines()
+        return [path.strip() for path in file_paths]
+    except Exception as e:
+        logging.error(f"Error loading file paths: {e}")
+        sys.exit(1)
+
 # Load the Sentence-BERT model
 device = "cuda" if torch.cuda.is_available() else "cpu"
 model = SentenceTransformer('all-MiniLM-L6-v2', device=device)
@@ -48,6 +59,13 @@ def find_relevant_entries(query, class_map, embeddings, top_k=5):
     return [(key, desc, score) for score, key, desc in top_results]
 
 if __name__ == "__main__":
+    # Load paths dynamically from file_paths.txt
+    file_paths = load_file_paths()
+
+    # Example usage: print the paths (you can replace this with actual use in your code)
+    for path in file_paths:
+        logging.info(f"Using file: {path}")
+
     if len(sys.argv) < 3:
         print("Usage: python query.py '<query>' <class_map_file> [top_k]")
         sys.exit(1)

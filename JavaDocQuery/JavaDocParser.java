@@ -48,9 +48,16 @@ public class JavaDocParser {
         // Write the class map to a JSON file
         writeMapToJson(classMap, "class_map.json");
 
+        // Load paths dynamically from file_paths.txt
+        String pythonCommand = loadPythonPath();
+        if (pythonCommand == null) {
+            System.err.println("Error: Python executable path not found in file_paths.txt");
+            return;
+        }
+
         // Preprocess embeddings using preprocess.py (optional, run this once)
         try {
-            preprocessPythonScript("preprocess.py");
+            preprocessPythonScript(pythonCommand, "preprocess.py");
             System.out.println("Preprocessing completed successfully.");
         } catch (Exception e) {
             System.err.println("Error during preprocessing: " + e.getMessage());
@@ -65,7 +72,7 @@ public class JavaDocParser {
         // Call the Python query script for text retrieval
         try {
             String pythonScriptPath = "query.py"; // Ensure this matches the actual location of the script
-            String result = executePythonScript(pythonScriptPath, query);
+            String result = executePythonScript(pythonCommand, pythonScriptPath, query);
             System.out.println("Relevant Results:\n" + result);
         } catch (Exception e) {
             e.printStackTrace();
@@ -131,10 +138,31 @@ public class JavaDocParser {
         }
     }
 
-    private static void preprocessPythonScript(String scriptPath) throws Exception {
-        // Use the Miniconda Python executable path
-        String pythonCommand = "C:\\Users\\hinna\\Miniconda3\\python.exe";
+    private static String loadPythonPath() {
+        try {
+            // Read paths from file_paths.txt and look for the Python executable path
+            File pathFile = new File("file_paths.txt");
+            if (!pathFile.exists()) {
+                System.err.println("Error: file_paths.txt not found.");
+                return null;
+            }
 
+            try (BufferedReader reader = new BufferedReader(new InputStreamReader(Files.newInputStream(pathFile.toPath())))) {
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    if (line.contains("python.exe")) {
+                        return line.trim();  // Return the path for python executable
+                    }
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return null;  // Return null if no Python path is found
+    }
+
+    private static void preprocessPythonScript(String pythonCommand, String scriptPath) throws Exception {
         System.out.println("Executing Preprocessing Python script: " + scriptPath);
         System.out.println("Python command: " + pythonCommand);
         System.out.println("Full command: " + pythonCommand + " " + scriptPath + " class_map.json");
@@ -171,15 +199,11 @@ public class JavaDocParser {
         }
     }
 
-    private static String executePythonScript(String scriptPath, String query) throws Exception {
-        // Use the Miniconda Python executable path
-        String pythonCommand = "C:\\Users\\hinna\\Miniconda3\\python.exe";
-
+    private static String executePythonScript(String pythonCommand, String scriptPath, String query) throws Exception {
         System.out.println("Executing Python query script: " + scriptPath);
         System.out.println("Python command: " + pythonCommand);
         System.out.println("Full command: " + pythonCommand + " " + scriptPath + " " + query + " class_map.json");
 
-        // Pass only two arguments: <query> and <class_map_file>
         ProcessBuilder processBuilder = new ProcessBuilder(pythonCommand, scriptPath, query, "class_map.json");
         processBuilder.redirectErrorStream(true); // Redirect error stream to standard output
         Process process = processBuilder.start();

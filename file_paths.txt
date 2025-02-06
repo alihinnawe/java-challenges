@@ -1,0 +1,5 @@
+C:\Users\hinna\Desktop\Javadoc\jsoup-1.18.3.jar 
+C:\Users\hinna\Desktop\Javadoc\gson-2.8.9.jar 
+C:\Users\hinna\Desktop\Javadoc\*.class 
+C:\Users\hinna\Miniconda3\python.exe
+
