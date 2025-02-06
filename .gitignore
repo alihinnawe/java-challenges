@@ -1,1 +1,7 @@
 docs/ 
+jsoup-1.18.3.jar
+gson-2.8.9.jar
+*.class
+jsoup-1.18.3.jar 
+gson-2.8.9.jar 
+*.class 
