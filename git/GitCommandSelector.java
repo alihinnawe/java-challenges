@@ -24,9 +24,8 @@ public class GitCommandSelector {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(600, 400);
 
-        // Create a panel with a vertical layout
-        JPanel panel = new JPanel();
-        panel.setLayout(new BorderLayout());
+        // Create a main panel with a BorderLayout
+        JPanel mainPanel = new JPanel(new BorderLayout());
 
         // Create a label for instructions
         JLabel label = new JLabel("Select a Git command to see its options:");
@@ -66,13 +65,17 @@ public class GitCommandSelector {
             }
         });
 
-        // Add components to the panel
-        panel.add(label, BorderLayout.NORTH);
-        panel.add(commandSelector, BorderLayout.CENTER);
-        panel.add(scrollPane, BorderLayout.SOUTH);
+        // Create a panel for the top section (label + combo box)
+        JPanel topPanel = new JPanel(new BorderLayout());
+        topPanel.add(label, BorderLayout.NORTH);
+        topPanel.add(commandSelector, BorderLayout.CENTER);
 
-        // Add the panel to the frame and make it visible
-        frame.add(panel);
+        // Add components to the main panel
+        mainPanel.add(topPanel, BorderLayout.NORTH);
+        mainPanel.add(scrollPane, BorderLayout.CENTER);
+
+        // Add the main panel to the frame and make it visible
+        frame.add(mainPanel);
         frame.setVisible(true);
     }
 }
