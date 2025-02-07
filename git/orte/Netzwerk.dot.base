@@ -1,0 +1,9 @@
+digraph Netzwerk {
+
+	SCHOENEBERG
+	TREPTOW
+	ORANIENBURG
+	HAMBURG 
+	
+	internet -> figd -> {schoeneberg treptow oranienburg hamburg}
+}

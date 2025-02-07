@@ -1,0 +1,48 @@
+#!/bin/bash
+#
+# 
+# fix fr. 10:34 R-Befehl in insert/sed groß, sonst liest er nur eine Zeile
+#	TPng -> Tpng
+#
+#
+insert ()
+{
+sed "/ORANIENBURG/R oranienburg.dot
+/HAMBURG/R hamburg.dot
+/SCHOENEBERG/R schoeneberg.dot
+/TREPTOW/R treptow.dot" netzwerk.dot.base > netzwerk.dot 
+}
+
+base () {
+	for f in oranienburg.dot schoeneberg.dot treptow.dot hamburg.dot
+	do
+		# Prüfen ob $f neuer ist als network.dot
+		# echo test $f -nt netzwerk.dot && insert 
+		test $f -nt netzwerk.png && insert 
+	done
+}
+
+clean () {
+	# löschen (remove) der generierten Dateien network.dot und .png
+	rm network.png network.dot 
+}
+
+genPng () {
+	base 
+	sed -i ';/.*B.RG/d;/TREPTOW/d' netzwerk.dot 
+	dot -Tpng netzwerk.dot -o netzwerk.png 
+}
+
+view () {
+	test netzwerk.dot -nt netzwerk.png && genPng
+	mspaint netzwerk.png & 
+	# xdot netzwerk.dot 
+	# /C/"Program Files"/WindowsApps/Microsoft.Windows.Photos_2024.11120.5010.0_x64__8wekyb3d8bbwe/Photos.exe netzwerk.png 
+}
+
+case $1 in 
+	base)	base ;;
+	view)	view ;;
+	clean)	clean ;;
+	*)	genPng ;;
+esac
