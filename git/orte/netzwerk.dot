@@ -1,12 +1,9 @@
 digraph Netzwerk {
 
-	SCHOENEBERG
-	TREPTOW
-	ORANIENBURG
-oraninenburg -> khawla  
-	HAMBURG 
+schoeneberg  -> {stefan katow}
+	treptow	-> vadim
+	oranienburg -> khawla  
 	hamburg	-> ali
- 
 	
 	internet -> figd -> {schoeneberg treptow oranienburg hamburg}
 }

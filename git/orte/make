@@ -5,13 +5,14 @@
 #	TPng -> Tpng
 #
 #
-insert ()
-{
-sed "/ORANIENBURG/R oranienburg.dot
-/HAMBURG/R hamburg.dot
-/SCHOENEBERG/R schoeneberg.dot
-/TREPTOW/R treptow.dot" netzwerk.dot.base > netzwerk.dot 
+insert () {
+    sed "/ORANIENBURG/R oranienburg.dot
+    /HAMBURG/R hamburg.dot
+    /SCHOENEBERG/R schoeneberg.dot
+    /TREPTOW/R treptow.dot" netzwerk.dot.base > netzwerk.dot
+    cat netzwerk.dot  # Print the result for debugging
 }
+
 
 base () {
 	for f in oranienburg.dot schoeneberg.dot treptow.dot hamburg.dot
@@ -28,10 +29,20 @@ clean () {
 }
 
 genPng () {
-	base 
-	sed -i ';/.*B.RG/d;/TREPTOW/d' netzwerk.dot 
-	dot -Tpng netzwerk.dot -o netzwerk.png 
+    # Insert the contents of all dot files
+    base 
+
+    # Check contents of netzwerk.dot before PNG generation
+    echo "Contents of netzwerk.dot before PNG generation:"
+    cat netzwerk.dot  # Check if both lines from schoeneberg are present
+
+    # Remove specific lines (if needed)
+    sed -i '/\<B\.RG\>/d;/\<TREPTOW\>/d' netzwerk.dot 
+
+    # Generate PNG from the updated dot file
+    dot -Tpng netzwerk.dot -o netzwerk.png 
 }
+
 
 view () {
 	test netzwerk.dot -nt netzwerk.png && genPng
